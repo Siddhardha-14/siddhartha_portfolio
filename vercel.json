@@ -1,5 +1,6 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "framework": null
+  "framework": null,
+  "outputDirectory": "."
 }

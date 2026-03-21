@@ -674,13 +674,8 @@ body:has(a:hover) .cursor-trail, body:has(button:hover) .cursor-trail {
   border: 1px solid var(--border);
   border-radius: 28px;
   overflow: hidden;
-  transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s;
+  transition: border-color 0.4s;
   position: relative;
-}
-.pcard:hover {
-  border-color: rgba(26,86,219,0.5);
-  box-shadow: 0 32px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(26,86,219,0.12) inset;
-  transform: translateY(-6px);
 }
 /* Reverse layout for alternating cards */
 .pcard.reverse { grid-template-columns: 1fr 480px; }
@@ -695,9 +690,8 @@ body:has(a:hover) .cursor-trail, body:has(button:hover) .cursor-trail {
   background-position: center top;
   background-repeat: no-repeat;
   min-height: 460px;
-  transition: background-size 0.6s cubic-bezier(0.4,0,0.2,1);
+  min-height: 460px;
 }
-.pcard:hover .pcard-img { background-size: 110%; }
 
 /* Dark scrim — bottom-heavy so it never fights the image */
 .pcard-img::before {

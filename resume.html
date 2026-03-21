@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siddhartha Gudiwada — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    /* ── BASE ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent:   #1a56db;
+      --accent2:  #2563eb;
+      --dark:     #0f172a;
+      --mid:      #1e293b;
+      --text:     #1e293b;
+      --text2:    #475569;
+      --muted:    #64748b;
+      --border:   #e2e8f0;
+      --bg:       #fff;
+      --font:     'Plus Jakarta Sans', sans-serif;
+    }
+    body {
+      font-family: var(--font);
+      background: #f1f5f9;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 16px 48px;
+    }
+
+    /* ── ACTIONS BAR ─────────────────────────────────────────── */
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      font-family: var(--font);
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+    }
+    .action-btn:hover { transform: translateY(-2px); }
+    .btn-blue {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(26,86,219,0.3);
+    }
+    .btn-blue:hover { background: var(--accent2); box-shadow: 0 6px 24px rgba(26,86,219,0.4); }
+    .btn-back {
+      background: #fff;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+    .btn-back:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── RESUME PAGE ────────────────────────────────────────── */
+    .resume {
+      width: 100%;
+      max-width: 860px;
+      background: var(--bg);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.12);
+    }
+
+    /* ── HEADER ─────────────────────────────────────────────── */
+    .resume-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1a56db 60%, #1e3a8a 100%);
+      padding: 44px 44px 40px;
+      display: flex;
+      align-items: flex-start;
+      gap: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .resume-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(45deg, rgba(255,255,255,0.04) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255,255,255,0.04) 25%, transparent 25%);
+      background-size: 40px 40px;
+    }
+
+    /* Photo with layered border */
+    .photo-wrap {
+      position: relative;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+    .photo-layer-3 {
+      width: 140px; height: 140px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.1);
+      position: absolute;
+      top: -8px; left: -8px;
+      z-index: 0;
+    }
+    .photo-layer-2 {
+      width: 140px; height: 140px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.18);
+      position: absolute;
+      top: -4px; left: -4px;
+      z-index: 1;
+    }
+    .photo-frame {
+      position: relative;
+      z-index: 2;
+      width: 140px;
+      height: 140px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.6);
+      background: linear-gradient(135deg, #1e3a5f, #1a56db);
+      box-shadow:
+        0 0 0 3px rgba(255,255,255,0.15),
+        0 8px 32px rgba(0,0,0,0.4);
+    }
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .photo-initials {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .header-info {
+      flex: 1;
+      min-width: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .header-name {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .header-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 16px;
+      letter-spacing: 0.01em;
+    }
+    .header-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin-bottom: 16px;
+    }
+    .hc-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+    }
+    .hc-item i { font-size: 0.75rem; color: rgba(255,255,255,0.55); }
+    .header-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .header-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── RESUME BODY ────────────────────────────────────────── */
+    .resume-body {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 0;
+    }
+    .col-main {
+      padding: 36px 36px 36px 44px;
+      border-right: 1px solid var(--border);
+    }
+    .col-side {
+      padding: 36px 36px 36px 28px;
+      background: #f8fafc;
+    }
+
+    /* ── SECTION ─────────────────────────────────────────────── */
+    .rsec { margin-bottom: 32px; }
+    .rsec:last-child { margin-bottom: 0; }
+    .rsec-title {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Objective */
+    .objective-text {
+      font-size: 0.875rem;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+
+    /* Work/Edu items */
+    .xp-item { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+    .xp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .xp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 3px; }
+    .xp-title { font-size: 0.95rem; font-weight: 700; color: var(--dark); }
+    .xp-period {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #fff;
+      background: var(--accent);
+      padding: 2px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .xp-org {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .xp-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .xp-points li {
+      font-size: 0.82rem;
+      color: var(--text2);
+      padding-left: 14px;
+      position: relative;
+    }
+    .xp-points li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.65rem;
+      top: 3px;
+    }
+
+    /* Projects */
+    .proj-item { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .proj-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .proj-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+    .proj-name { font-size: 0.9rem; font-weight: 700; }
+    .proj-link { font-size: 0.72rem; color: var(--accent); text-decoration: none; }
+    .proj-link:hover { text-decoration: underline; }
+    .proj-desc { font-size: 0.8rem; color: var(--text2); margin-bottom: 6px; line-height: 1.6; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .ptag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(26,86,219,0.08);
+      border: 1px solid rgba(26,86,219,0.15);
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+
+    /* Side sections */
+    .skills-list { display: flex; flex-direction: column; gap: 8px; }
+    .skill-row { display: flex; align-items: center; gap: 8px; }
+    .skill-name { font-size: 0.78rem; font-weight: 600; width: 110px; flex-shrink: 0; }
+    .skill-bar { flex: 1; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    .skill-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #60a5fa); border-radius: 2px; }
+
+    .side-skill-group { margin-bottom: 20px; }
+    .ssg-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .side-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .side-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text2);
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+
+    .cert-item { display: flex; flex-direction: column; gap: 2px; margin-bottom: 12px; }
+    .cert-item:last-child { margin-bottom: 0; }
+    .cert-name { font-size: 0.82rem; font-weight: 700; }
+    .cert-meta { font-size: 0.75rem; color: var(--muted); }
+
+    .lang-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 0.8rem; }
+    .lang-name { font-weight: 600; }
+    .lang-level { font-size: 0.72rem; color: var(--muted); }
+
+    /* ── PRINT ──────────────────────────────────────────────── */
+    @media print {
+      body { background: #fff; padding: 0; }
+      .actions { display: none; }
+      .resume { box-shadow: none; border-radius: 0; max-width: 100%; }
+    }
+
+    @media (max-width: 680px) {
+      .resume-header { flex-direction: column; align-items: center; text-align: center; padding: 32px 24px; }
+      .header-contacts { justify-content: center; }
+      .header-tags { justify-content: center; }
+      .resume-body { grid-template-columns: 1fr; }
+      .col-side { border-top: 1px solid var(--border); }
+      .actions { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="actions">
+    <a href="index.html" class="action-btn btn-back"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+    <button class="action-btn btn-blue" onclick="window.print()"><i class="fa-solid fa-print"></i> Print / Save PDF</button>
+  </div>
+
+  <div class="resume">
+
+    <!-- ── HEADER ──────────────────────────────────────────── -->
+    <div class="resume-header">
+      <!-- Photo with layered border effect -->
+      <div class="photo-wrap">
+        <div class="photo-layer-3"></div>
+        <div class="photo-layer-2"></div>
+        <div class="photo-frame">
+          <img src="assets/photo.jpg" alt="Siddhartha Gudiwada"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div class="photo-initials" style="display:none;">SG</div>
+        </div>
+      </div>
+
+      <div class="header-info">
+        <div class="header-name">Siddhartha Gudiwada</div>
+        <div class="header-title">Jr. UI/UX Designer · AI-Augmented Design · Figma &amp; Automation</div>
+        <div class="header-contacts">
+          <a href="mailto:siddhardhagudiwada133@gmail.com" class="hc-item">
+            <i class="fa-solid fa-envelope"></i> siddhardhagudiwada133@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/siddhartha-gudiwada-9b3584254" target="_blank" class="hc-item">
+            <i class="fa-brands fa-linkedin"></i> linkedin.com/in/siddhartha-gudiwada
+          </a>
+          <a href="https://github.com/Siddhardha-14" target="_blank" class="hc-item">
+            <i class="fa-brands fa-github"></i> github.com/Siddhardha-14
+          </a>
+        </div>
+        <div class="header-tags">
+          <span class="header-tag">Hyderabad</span>
+          <span class="header-tag">Bengaluru</span>
+          <span class="header-tag">Chennai</span>
+          <span class="header-tag">Open to Relocation</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BODY ────────────────────────────────────────────── -->
+    <div class="resume-body">
+
+      <!-- MAIN COLUMN -->
+      <div class="col-main">
+
+        <!-- Objective -->
+        <div class="rsec">
+          <div class="rsec-title"><i class="fa-solid fa-user"></i> Professional Summary</div>
+          <p class="objective-text">
+            Final-year ECE student and UI/UX Designer with hands-on internship experience at Infotact Solutions, where I designed 15+ screens for an enterprise HRMS product. I combine user-centered design principles with modern AI tools (Lovable, Cursor, Figma Make, Stitch) and workflow automation to build fast, beautiful, and functional digital products. Currently seeking Jr. UI/UX Designer roles in Hyderabad, Bengaluru, or Chennai.
+          </p>
+        </div>
+
+        <!-- Experience -->
+        <div class="rsec">
+          <div class="rsec-title"><i class="fa-solid fa-briefcase"></i> Work Experience</div>
+          <div class="xp-item">
+            <div class="xp-header">
+              <span class="xp-title">UI Designer Intern</span>
+              <span class="xp-period">2024</span>
+            </div>
+            <div class="xp-org">Infotact Solutions — PeoplePulse HRMS</div>
+            <ul class="xp-points">
+              <li>Designed 15+ responsive screens for an enterprise HRMS platform including authentication flows, employee portal, attendance and leave management interfaces.</li>
+              <li>Collaborated cross-functionally with product managers and development teams to ensure pixel-perfect implementation and developer handoff.</li>
+              <li>Conducted usability research, created wireframes and high-fidelity Figma prototypes, and iterated based on stakeholder feedback.</li>
+              <li>Maintained a component library and design system to ensure consistency across all product screens.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="rsec">
+          <div class="rsec-title"><i class="fa-solid fa-folder-open"></i> Projects</div>
+
+          <div class="proj-item">
+            <div class="proj-header">
+              <span class="proj-name">PeoplePulse HRMS</span>
+              <a href="https://www.figma.com/design/1t9yl5vwHBGHOciPBaqNC6/PeoplePulse-HRMS" target="_blank" class="proj-link">↗ View on Figma</a>
+            </div>
+            <p class="proj-desc">Designed 15+ responsive screens for an HR management system — covering auth flows, employee portal, and leave management UI. Delivered complete design handoff documentation.</p>
+            <div class="proj-tags">
+              <span class="ptag">Figma</span><span class="ptag">Wireframing</span><span class="ptag">Prototyping</span><span class="ptag">Design Handoff</span><span class="ptag">HRMS</span>
+            </div>
+          </div>
+
+          <div class="proj-item">
+            <div class="proj-header">
+              <span class="proj-name">Smart Agri Hub</span>
+            </div>
+            <p class="proj-desc">End-to-end mobile app UI for a farmer support platform — user research, wireframes, and high-fidelity Figma screens designed for rural usability.</p>
+            <div class="proj-tags">
+              <span class="ptag">Figma</span><span class="ptag">User Research</span><span class="ptag">Prototyping</span><span class="ptag">Mobile UI</span>
+            </div>
+          </div>
+
+          <div class="proj-item">
+            <div class="proj-header">
+              <span class="proj-name">Smartwatch Bus Booking UI</span>
+            </div>
+            <p class="proj-desc">Glanceable, thumb-friendly wearable UI for a bus booking system adhering to Wear OS specifications and interaction guidelines.</p>
+            <div class="proj-tags">
+              <span class="ptag">Figma</span><span class="ptag">Auto Layout</span><span class="ptag">Wearable UI</span><span class="ptag">Smart Animate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education -->
+        <div class="rsec">
+          <div class="rsec-title"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+          <div class="xp-item">
+            <div class="xp-header">
+              <span class="xp-title">B.E. Electronics &amp; Communication Engineering</span>
+              <span class="xp-period">2022–2026</span>
+            </div>
+            <div class="xp-org">Kalasalingam Academy of Research and Education</div>
+            <ul class="xp-points">
+              <li>CGPA: 7.25/10 — Graduating 2026</li>
+              <li>Core subjects: Signal Processing, Embedded Systems, Communication Networks</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SIDE COLUMN -->
+      <div class="col-side">
+
+        <!-- Core Skills -->
+        <div class="rsec">
+          <div class="rsec-title"><i class="fa-solid fa-star"></i> Core Design Skills</div>
+          <div class="skills-list">
+            <div class="skill-row">
+              <span class="skill-name">Figma</span>
+              <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+            </div>
+            <div class="skill-row">
+              <span class="skill-name">Wireframing</span>
+              <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+            </div>
+            <div class="skill-row">
+              <span class="skill-name">Prototyping</span>
+              <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+            </div>
+            <div class="skill-row">
+              <span class="skill-name">Design Systems</span>
+              <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+            </div>
+            <div class="skill-row">
+              <span class="skill-name">User Research</span>
+              <div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div>
+            </div>
+            <div class="skill-row">
+              <span class="skill-name">WCAG A11y</span>
+              <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI & Tools -->
+        <div class="rsec">
+          <div class="rsec-title"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Design Tools</div>
+          <div class="side-skill-group">
+            <div class="side-tags">
+              <span class="side-tag">Lovable</span>
+              <span class="side-tag">Cursor</span>
+              <span class="side-tag">Figma Make</span>
+              <span class="side-tag">Stitch</span>
+              <span class="side-tag">Antigravity</span>
+              <span class="side-tag">v0.dev</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Automation -->
+        <div class="rsec">
+          <div class="rsec-title"><i class="fa-solid fa-gears"></i> Automation</div>
+          <div class="side-tags">
+            <span class="side-tag">n8n</span>
+            <span class="side-tag">Make (Integromat)</span>
+            <span class="side-tag">Opal</span>
+          </div>
+        </div>
+
+        <!-- Data & Dev -->
+        <div class="rsec">
+          <div class="rsec-title"><i class="fa-solid fa-code"></i> Dev &amp; Data</div>
+          <div class="side-tags">
+            <span class="side-tag">HTML/CSS</span>
+            <span class="side-tag">SQL</span>
+            <span class="side-tag">Excel</span>
+            <span class="side-tag">Power BI</span>
+            <span class="side-tag">VS Code</span>
+          </div>
+        </div>
+
+        <!-- Collaboration -->
+        <div class="rsec">
+          <div class="rsec-title"><i class="fa-solid fa-people-group"></i> Collaboration</div>
+          <div class="side-tags">
+            <span class="side-tag">Jira</span>
+            <span class="side-tag">Notion</span>
+            <span class="side-tag">Framer</span>
+            <span class="side-tag">Miro</span>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="rsec">
+          <div class="rsec-title"><i class="fa-solid fa-certificate"></i> Certifications</div>
+          <div class="cert-item">
+            <span class="cert-name">UI/UX Design</span>
+            <span class="cert-meta">Great Learning · July 2024</span>
+          </div>
+          <div class="cert-item">
+            <span class="cert-name">Soft Skills Certification</span>
+            <span class="cert-meta">Professional Development · 2023</span>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div class="rsec">
+          <div class="rsec-title"><i class="fa-solid fa-language"></i> Languages</div>
+          <div class="lang-item"><span class="lang-name">Telugu</span><span class="lang-level">Native</span></div>
+          <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Professional</span></div>
+          <div class="lang-item"><span class="lang-name">Hindi</span><span class="lang-level">Conversational</span></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

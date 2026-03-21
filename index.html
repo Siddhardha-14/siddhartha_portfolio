@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siddhartha Gudiwada — Jr. UI/UX Designer</title>
+  <meta name="description" content="Portfolio of Siddhartha Gudiwada — Jr. UI/UX Designer specializing in AI-augmented design, Figma, and automation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── CURSOR ───────────────────────────────────────────────── -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- ── NAV ──────────────────────────────────────────────────── -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">SG<span class="dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Work</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="resume.html" target="_blank" class="btn btn-outline nav-resume">Resume</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── MOBILE MENU ───────────────────────────────────────────── -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#skills" class="mobile-link">Skills</a>
+    <a href="#projects" class="mobile-link">Work</a>
+    <a href="#experience" class="mobile-link">Experience</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="resume.html" target="_blank" class="mobile-link accent">Resume ↗</a>
+  </div>
+
+  <main>
+
+    <!-- ── 1. HERO ───────────────────────────────────────────── -->
+    <section class="hero" id="hero">
+      <div class="hero-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+      </div>
+      <div class="hero-grid-overlay"></div>
+
+      <div class="hero-content" data-aos>
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Available for Jr. UI/UX Roles — Hyderabad · Bengaluru · Chennai
+        </div>
+        <h1 class="hero-name">Siddhartha<br><span class="accent-text">Gudiwada</span></h1>
+        <p class="hero-title">Jr. UI/UX Designer &nbsp;|&nbsp; AI-Augmented Design &nbsp;|&nbsp; Figma &amp; Automation</p>
+        <p class="hero-tagline">I design intuitive digital experiences — powered by creativity and modern AI tools.</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">
+            <i class="fa-solid fa-eye"></i> View My Work
+          </a>
+          <a href="#contact" class="btn btn-ghost">
+            Contact Me <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-n">15+</span><span class="stat-l">Screens Designed</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-n">3+</span><span class="stat-l">Projects Shipped</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-n">2026</span><span class="stat-l">Grad</span></div>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ── 2. ABOUT ──────────────────────────────────────────── -->
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="section-label" data-aos>About Me</div>
+        <div class="about-grid">
+          <div class="about-text" data-aos>
+            <h2 class="section-heading">Building experiences that <span class="accent-text">feel right.</span></h2>
+            <p>I'm a final-year ECE student and UI/UX Designer with hands-on internship experience at <strong>Infotact Solutions</strong>, where I designed <strong>15+ screens</strong> for an HRMS product. I combine user-centered design with modern AI tools and automation to build fast, beautiful, and functional digital products.</p>
+            <p>Currently seeking <strong>Jr. UI/UX Designer</strong> roles in Hyderabad, Bengaluru, or Chennai.</p>
+            <div class="about-chips">
+              <span class="chip"><i class="fa-brands fa-figma"></i> Figma</span>
+              <span class="chip"><i class="fa-solid fa-robot"></i> AI Design Tools</span>
+              <span class="chip"><i class="fa-solid fa-diagram-project"></i> Design Systems</span>
+              <span class="chip"><i class="fa-solid fa-universal-access"></i> WCAG A11y</span>
+            </div>
+          </div>
+          <div class="about-avatar" data-aos>
+            <div class="avatar-rings">
+              <div class="ring ring-1"></div>
+              <div class="ring ring-2"></div>
+              <div class="ring ring-3"></div>
+            </div>
+            <div class="avatar-card">
+              <img src="assets/photo.jpg" alt="Siddhartha Gudiwada" class="avatar-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+              <div class="avatar-initials" style="display:none;">SG</div>
+              <div class="avatar-glow"></div>
+            </div>
+            <div class="avatar-badge">
+              <i class="fa-solid fa-paintbrush"></i>
+              <span>UI/UX Designer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3. SKILLS ─────────────────────────────────────────── -->
+    <section class="skills section" id="skills">
+      <div class="container">
+        <div class="section-label" data-aos>Skills</div>
+        <h2 class="section-heading centered" data-aos>Modern <span class="accent-text">Tech Stack</span></h2>
+
+        <div class="skills-bento">
+          <!-- Featured: AI Design & Production -->
+          <div class="bento-box featured" data-aos>
+            <div class="bento-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Future of Design</div>
+            <h3 class="bento-title">AI-Native Production</h3>
+            <div class="skill-tags">
+              <div class="skill-pill master"><i class="fa-solid fa-gem"></i> Lovable</div>
+              <div class="skill-pill master"><i class="fa-solid fa-terminal"></i> Cursor</div>
+              <div class="skill-pill master"><i class="fa-solid fa-stitching"></i> Stitch</div>
+              <div class="skill-pill master"><i class="fa-solid fa-code"></i> v0.dev</div>
+              <div class="skill-pill master"><i class="fa-solid fa-bolt"></i> Antigravity</div>
+              <div class="skill-pill"><i class="fa-brands fa-figma"></i> Figma AI</div>
+            </div>
+          </div>
+
+          <!-- UI/UX Architecture -->
+          <div class="bento-box bento-wide" data-aos>
+            <div class="bento-label"><i class="fa-regular fa-pen-to-square"></i> Core Architecture</div>
+            <h3 class="bento-title">UI/UX Strategy</h3>
+            <div class="skill-tags">
+              <div class="skill-pill"><i class="fa-brands fa-figma"></i> Figma</div>
+              <div class="skill-pill"><i class="fa-solid fa-cubes"></i> Design Systems</div>
+              <div class="skill-pill"><i class="fa-solid fa-pencil-ruler"></i> Wireframing</div>
+              <div class="skill-pill"><i class="fa-solid fa-layer-group"></i> Prototyping</div>
+              <div class="skill-pill"><i class="fa-solid fa-diagram-project"></i> User Flows</div>
+              <div class="skill-pill"><i class="fa-solid fa-universal-access"></i> A11y (WCAG)</div>
+              <div class="skill-pill"><i class="fa-solid fa-microscope"></i> Usability Testing</div>
+            </div>
+          </div>
+
+          <!-- Automation -->
+          <div class="bento-box" data-aos>
+            <div class="bento-label"><i class="fa-solid fa-gears"></i> Workflow</div>
+            <h3 class="bento-title">Automation</h3>
+            <div class="skill-tags">
+              <div class="skill-pill"><i class="fa-solid fa-network-wired"></i> n8n</div>
+              <div class="skill-pill"><i class="fa-solid fa-circle-nodes"></i> Make</div>
+              <div class="skill-pill"><i class="fa-solid fa-diamond"></i> Opal</div>
+            </div>
+          </div>
+
+          <!-- Data & Dev -->
+          <div class="bento-box" data-aos>
+            <div class="bento-label"><i class="fa-solid fa-code"></i> Implementation</div>
+            <h3 class="bento-title">Data & Dev</h3>
+            <div class="skill-tags">
+              <div class="skill-pill"><i class="fa-solid fa-database"></i> SQL</div>
+              <div class="skill-pill"><i class="fa-brands fa-html5"></i> HTML/CSS</div>
+              <div class="skill-pill"><i class="fa-solid fa-chart-pie"></i> Power BI</div>
+            </div>
+          </div>
+
+          <!-- Collaboration -->
+          <div class="bento-box bento-wide" data-aos>
+            <div class="bento-label"><i class="fa-solid fa-people-group"></i> Ecosystem</div>
+            <h3 class="bento-title">Collaboration & Stack</h3>
+            <div class="skill-tags">
+              <div class="skill-pill"><i class="fa-brands fa-jira"></i> Jira</div>
+              <div class="skill-pill"><i class="fa-solid fa-book-open"></i> Notion</div>
+              <div class="skill-pill"><i class="fa-solid fa-wind"></i> Framer</div>
+              <div class="skill-pill"><i class="fa-brands fa-slack"></i> Slack</div>
+              <div class="skill-pill"><i class="fa-solid fa-laptop-code"></i> VS Code</div>
+              <div class="skill-pill"><i class="fa-solid fa-sticky-note"></i> Miro</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 4. PROJECTS ───────────────────────────────────────── -->
+    <section class="projects section" id="projects">
+      <div class="container">
+        <div class="section-label" data-aos>Featured Work</div>
+        <h2 class="section-heading centered" data-aos>Projects that <span class="accent-text">matter.</span></h2>
+        <div class="projects-list">
+          
+          <!-- ── Project 0 — FoodBridge ── Details RIGHT · Image LEFT -->
+          <article class="pcard" data-aos>
+            <div class="pcard-img" style="background-image:url('assets/foodbridge.png');">
+              <span class="pcard-badge badge-ai">AI-Native / Full-stack</span>
+            </div>
+            <div class="pcard-body">
+              <div>
+                <h3 class="pcard-title">FoodBridge</h3>
+                <p class="pcard-tagline">Connecting Surplus to Service</p>
+              </div>
+              <div class="pcard-chips">
+                <span class="pchip master">Lovable</span>
+                <span class="pchip">React</span>
+                <span class="pchip">TypeScript</span>
+                <span class="pchip">Supabase</span>
+                <span class="pchip">Twilio</span>
+                <span class="pchip">Framer Motion</span>
+              </div>
+              <p class="pcard-desc">A comprehensive food rescue ecosystem connecting restaurants with surplus food to NGOs and volunteers. Features real-time listings, automated Twilio voice confirmations, and impact analytics.</p>
+              <div class="pcard-role">
+                <div class="pcard-role-label">My Role</div>
+                <p>Full-stack Developer — Architected and built the entire application using AI-native workflows (Lovable & Cursor) for rapid deployment.</p>
+              </div>
+              <div class="pcard-ps">
+                <div class="ps-box ps-problem">
+                  <div class="ps-box-label">⚠ Problem</div>
+                  <p>Huge food waste in restaurants while NGOs struggle to find timely donations or volunteers for pickup.</p>
+                </div>
+                <div class="ps-box ps-solution">
+                  <div class="ps-box-label">✦ Solution</div>
+                  <p>Real-time listing & claiming with automated Twilio dispatch and role-based dashboards for seamless coordination.</p>
+                </div>
+              </div>
+              <div class="pcard-process">
+                <span class="proc-step">AI Prototyping</span><span class="proc-dot"></span>
+                <span class="proc-step">System Architecture</span><span class="proc-dot"></span>
+                <span class="proc-step">Database Design</span><span class="proc-dot"></span>
+                <span class="proc-step">Twilio Integration</span><span class="proc-dot"></span>
+                <span class="proc-step">Deploy</span>
+              </div>
+              <div class="pcard-foot">
+                <a href="https://hungry-hearts-link.lovable.app" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live
+                </a>
+              </div>
+            </div>
+          </article>
+          <article class="pcard" data-aos>
+            <div class="pcard-img" style="background-image:url('assets/vehicle-bay.png');">
+              <span class="pcard-badge">UI/UX Design</span>
+            </div>
+            <div class="pcard-body">
+              <div>
+                <h3 class="pcard-title">Vehicle Bay</h3>
+                <p class="pcard-tagline">Smart Parking, Simplified</p>
+              </div>
+              <div class="pcard-chips">
+                <span class="pchip">Figma</span>
+                <span class="pchip">User Research</span>
+                <span class="pchip">React</span>
+                <span class="pchip">Mobile UI</span>
+                <span class="pchip">Prototyping</span>
+              </div>
+              <p class="pcard-desc">A complete UI/UX case study for a smart parking slot booking mobile app — from user research and personas to high-fidelity screens and a working React prototype.</p>
+              <div class="pcard-role">
+                <div class="pcard-role-label">My Role</div>
+                <p>Lead UI/UX Designer — end-to-end; user research, information architecture, wireframes, visual design, and React prototype.</p>
+              </div>
+              <div class="pcard-ps">
+                <div class="ps-box ps-problem">
+                  <div class="ps-box-label">⚠ Problem</div>
+                  <p>Drivers waste time circling lots; no real-time slot visibility or advance booking.</p>
+                </div>
+                <div class="ps-box ps-solution">
+                  <div class="ps-box-label">✦ Solution</div>
+                  <p>Live map view, slot reservation, QR check-in, and contactless payment in one flow.</p>
+                </div>
+              </div>
+              <div class="pcard-process">
+                <span class="proc-step">Research</span><span class="proc-dot"></span>
+                <span class="proc-step">Personas</span><span class="proc-dot"></span>
+                <span class="proc-step">Wireframes</span><span class="proc-dot"></span>
+                <span class="proc-step">Visual Design</span><span class="proc-dot"></span>
+                <span class="proc-step">Prototype</span>
+              </div>
+              <div class="pcard-foot">
+                <a href="vehicle-bay-case-study/dist/index.html" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                  <i class="fa-solid fa-book-open"></i> Read Case Study
+                </a>
+                <a href="https://www.figma.com/design/KLlM84Icr7t7cINou8gFzW/Vehicle-parking?node-id=67-37&t=WJ2ZwFry4dv6eGc4-0" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-figma"></i> View on Figma
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 2 — PeoplePulse HRMS ── Details LEFT · Image RIGHT -->
+          <article class="pcard reverse" data-aos>
+            <div class="pcard-img" style="background-image:url('assets/hrms.png');">
+              <span class="pcard-badge badge-gold">Internship</span>
+            </div>
+            <div class="pcard-body">
+              <div>
+                <h3 class="pcard-title">PeoplePulse HRMS</h3>
+                <p class="pcard-tagline">HR Made Human</p>
+              </div>
+              <div class="pcard-chips">
+                <span class="pchip">Figma</span>
+                <span class="pchip">Wireframing</span>
+                <span class="pchip">Prototyping</span>
+                <span class="pchip chip-yellow">Enterprise UX</span>
+                <span class="pchip chip-yellow">Dashboard Design</span>
+              </div>
+              <p class="pcard-desc">Designed 15+ responsive screens for a full HR management system — auth flows, employee portal, attendance tracking, and leave management, delivered during an internship at Infotact Solutions.</p>
+              <div class="pcard-role">
+                <div class="pcard-role-label">My Role</div>
+                <p>UI/UX Designer (Internship) — full design ownership from user stories to Figma prototypes across all core HR modules.</p>
+              </div>
+              <div class="pcard-ps">
+                <div class="ps-box ps-problem">
+                  <div class="ps-box-label">⚠ Problem</div>
+                  <p>Legacy HR tools are cluttered with poor workflows, causing employee frustration and manager inefficiency.</p>
+                </div>
+                <div class="ps-box ps-solution">
+                  <div class="ps-box-label">✦ Solution</div>
+                  <p>Clean, role-based dashboard with one-click approvals, self-service portal, and real-time analytics.</p>
+                </div>
+              </div>
+              <div class="pcard-process">
+                <span class="proc-step">Discovery</span><span class="proc-dot"></span>
+                <span class="proc-step">IA</span><span class="proc-dot"></span>
+                <span class="proc-step">Wireframe</span><span class="proc-dot"></span>
+                <span class="proc-step">UI Design</span><span class="proc-dot"></span>
+                <span class="proc-step">Handoff</span>
+              </div>
+              <div class="pcard-foot">
+                <a href="https://www.figma.com/design/1t9yl5vwHBGHOciPBaqNC6/PeoplePulse-HRMS" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                  <i class="fa-brands fa-figma"></i> View on Figma
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 3 — NexusHome ── Image LEFT · Details RIGHT -->
+          <article class="pcard" data-aos>
+            <div class="pcard-img" style="background-image:url('assets/nexushome.png');">
+              <span class="pcard-badge badge-purple">Internship</span>
+            </div>
+            <div class="pcard-body">
+              <div>
+                <h3 class="pcard-title">NexusHome</h3>
+                <p class="pcard-tagline">Smart Home, Dark Mode First</p>
+              </div>
+              <div class="pcard-chips">
+                <span class="pchip chip-purple">Figma</span>
+                <span class="pchip chip-purple">Mobile UI</span>
+                <span class="pchip chip-purple">IoT Design</span>
+                <span class="pchip chip-purple">Dark Theme</span>
+                <span class="pchip chip-purple">Auto Layout</span>
+              </div>
+              <p class="pcard-desc">Designed a premium smart home IoT control app with intuitive device management, automation routines, scene scheduling — all in a stunning dark-mode interface with glassmorphism cards.</p>
+              <div class="pcard-role">
+                <div class="pcard-role-label">My Role</div>
+                <p>Product UI Designer (Internship) — visual system, component library, interactive prototype, and developer handoff.</p>
+              </div>
+              <div class="pcard-ps">
+                <div class="ps-box ps-problem">
+                  <div class="ps-box-label">⚠ Problem</div>
+                  <p>Smart home apps feel cluttered and technical, overwhelming non-expert users at first launch.</p>
+                </div>
+                <div class="ps-box ps-solution">
+                  <div class="ps-box-label">✦ Solution</div>
+                  <p>Contextual room cards, one-tap scene control, and a progressive onboarding that hides complexity.</p>
+                </div>
+              </div>
+              <div class="pcard-process">
+                <span class="proc-step">Moodboard</span><span class="proc-dot"></span>
+                <span class="proc-step">Components</span><span class="proc-dot"></span>
+                <span class="proc-step">Screens</span><span class="proc-dot"></span>
+                <span class="proc-step">Prototype</span><span class="proc-dot"></span>
+                <span class="proc-step">Launch</span>
+              </div>
+              <div class="pcard-foot">
+                <a href="https://nexus-home-ui-a.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live
+                </a>
+                <a href="https://www.figma.com/design/TSQ4LdLya244WE1ItqVJCt/NexusHome?node-id=81-125&p=f&t=2xuiaGbarHGpexSP-0" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+                  <i class="fa-brands fa-figma"></i> View on Figma
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 4 — Smart Agri Hub ── Details LEFT · Image RIGHT -->
+          <article class="pcard reverse" data-aos>
+            <div class="pcard-img" style="background-image:url('assets/agri-hub.png');">
+              <span class="pcard-badge badge-green">Mobile UI</span>
+            </div>
+            <div class="pcard-body">
+              <div>
+                <h3 class="pcard-title">Smart Agri Hub</h3>
+                <p class="pcard-tagline">Your Farming Companion</p>
+              </div>
+              <div class="pcard-chips">
+                <span class="pchip chip-green">Figma</span>
+                <span class="pchip chip-green">User Research</span>
+                <span class="pchip chip-green">Prototyping</span>
+                <span class="pchip chip-green">AgriTech</span>
+                <span class="pchip chip-green">Data Viz</span>
+              </div>
+              <p class="pcard-desc">End-to-end mobile app UI for a farmer support platform — real-time crop health, weather alerts, market pricing, and expert chat — designed with accessibility for rural users.</p>
+              <div class="pcard-role">
+                <div class="pcard-role-label">My Role</div>
+                <p>UI/UX Designer — user research with farmers, persona definition, journey mapping, wireframes through to high-fi Figma screens.</p>
+              </div>
+              <div class="pcard-ps">
+                <div class="ps-box ps-problem">
+                  <div class="ps-box-label">⚠ Problem</div>
+                  <p>Farmers lack timely access to crop advice, market prices, and weather — often relying on unreliable sources.</p>
+                </div>
+                <div class="ps-box ps-solution">
+                  <div class="ps-box-label">✦ Solution</div>
+                  <p>Unified app with live market prices, AI crop diagnosis, nearby expert chat, and region-specific weather, designed for low-literacy users.</p>
+                </div>
+              </div>
+              <div class="pcard-process">
+                <span class="proc-step">Field Research</span><span class="proc-dot"></span>
+                <span class="proc-step">Personas</span><span class="proc-dot"></span>
+                <span class="proc-step">IA</span><span class="proc-dot"></span>
+                <span class="proc-step">Wireframes</span><span class="proc-dot"></span>
+                <span class="proc-step">Visual Design</span>
+              </div>
+              <div class="pcard-foot">
+                <a href="https://www.figma.com/design/SFUvgEF0gZQZfWqviDpEAz/smart-agri-hub?node-id=0-1&p=f&t=pdlqsjdAHexKA481-0" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                  <i class="fa-brands fa-figma"></i> View on Figma
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 5 — Smartwatch Bus Booking ── Image LEFT · Details RIGHT -->
+          <article class="pcard" data-aos>
+            <div class="pcard-img" style="background-image:url('assets/smartwatch.png');">
+              <span class="pcard-badge badge-purple">Wearable UI</span>
+            </div>
+            <div class="pcard-body">
+              <div>
+                <h3 class="pcard-title">Smartwatch Bus Booking</h3>
+                <p class="pcard-tagline">Glanceable. Thumb-Friendly. Fast.</p>
+              </div>
+              <div class="pcard-chips">
+                <span class="pchip chip-purple">Figma</span>
+                <span class="pchip chip-purple">Wear OS</span>
+                <span class="pchip chip-purple">Auto Layout</span>
+                <span class="pchip chip-purple">Smart Animate</span>
+                <span class="pchip chip-purple">Micro-interactions</span>
+              </div>
+              <p class="pcard-desc">Glanceable, thumb-friendly wearable UI for a bus booking system on Wear OS — real-time departures, one-tap booking, and QR confirmation, all within tight circular screen constraints.</p>
+              <div class="pcard-role">
+                <div class="pcard-role-label">My Role</div>
+                <p>Wearable UI Designer — Wear OS guidelines, circular component design, animated transitions, and usability testing on watch emulators.</p>
+              </div>
+              <div class="pcard-ps">
+                <div class="ps-box ps-problem">
+                  <div class="ps-box-label">⚠ Problem</div>
+                  <p>Booking a bus on a phone while commuting is slow — unlocking, navigating, and typing on a small screen while standing.</p>
+                </div>
+                <div class="ps-box ps-solution">
+                  <div class="ps-box-label">✦ Solution</div>
+                  <p>Wrist-first UX: nearby stops auto-detected, departure in one swipe, QR ticket on wrist — no phone needed.</p>
+                </div>
+              </div>
+              <div class="pcard-process">
+                <span class="proc-step">Constraints Research</span><span class="proc-dot"></span>
+                <span class="proc-step">Flow Map</span><span class="proc-dot"></span>
+                <span class="proc-step">Components</span><span class="proc-dot"></span>
+                <span class="proc-step">Prototype</span>
+              </div>
+              <div class="pcard-foot">
+                <a href="https://www.figma.com/design/enGsbnl8r9GbRpZVPMkGqC/Bus-booking-intf?node-id=5-12&p=f&t=2xuiaGbarHGpexSP-0" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                  <i class="fa-brands fa-figma"></i> View on Figma
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ── 5. EXPERIENCE & EDUCATION ────────────────────────── -->
+    <section class="experience section" id="experience">
+      <div class="container">
+        <div class="section-label" data-aos>Journey</div>
+        <h2 class="section-heading centered" data-aos>Experience &amp; <span class="accent-text">Education</span></h2>
+        <div class="timeline">
+
+          <div class="timeline-item" data-aos>
+            <div class="timeline-icon work"><i class="fa-solid fa-briefcase"></i></div>
+            <div class="timeline-card">
+              <div class="tl-meta">
+                <span class="tl-type">Work</span>
+                <span class="tl-year">2024</span>
+              </div>
+              <h3 class="tl-title">UI Designer Intern</h3>
+              <p class="tl-company"><i class="fa-solid fa-building"></i> Infotact Solutions — PeoplePulse HRMS</p>
+              <p class="tl-desc">Designed 15+ screens for an enterprise HRMS product. Collaborated cross-functionally with product managers and dev teams. Delivered auth flows, employee portal, attendance and leave management UI.</p>
+              <div class="tl-tags">
+                <span class="tag">Figma</span><span class="tag">UI Design</span><span class="tag">Prototyping</span><span class="tag">Handoff</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-aos>
+            <div class="timeline-icon edu"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="timeline-card">
+              <div class="tl-meta">
+                <span class="tl-type edu-type">Education</span>
+                <span class="tl-year">2022 – 2026</span>
+              </div>
+              <h3 class="tl-title">B.E. Electronics &amp; Communication Engineering</h3>
+              <p class="tl-company"><i class="fa-solid fa-school"></i> Kalasalingam Academy of Research and Education</p>
+              <p class="tl-desc">CGPA: 7.25/10 · Graduating 2026. Studied signal processing, embedded systems, and communication networks while building a strong front-end and design skill set alongside.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 6. CERTIFICATIONS ─────────────────────────────────── -->
+    <section class="certs section" id="certs">
+      <div class="container">
+        <div class="section-label" data-aos>Recognition</div>
+        <h2 class="section-heading centered" data-aos><span class="accent-text">Certifications</span></h2>
+        <div class="certs-grid">
+
+          <div class="cert-card" data-aos>
+            <div class="cert-icon"><i class="fa-solid fa-certificate"></i></div>
+            <div class="cert-body">
+              <h3 class="cert-title">UI/UX Design</h3>
+              <p class="cert-org">Great Learning</p>
+              <p class="cert-date"><i class="fa-regular fa-calendar"></i> July 2024</p>
+            </div>
+          </div>
+
+          <div class="cert-card" data-aos>
+            <div class="cert-icon"><i class="fa-solid fa-award"></i></div>
+            <div class="cert-body">
+              <h3 class="cert-title">Soft Skills Certification</h3>
+              <p class="cert-org">Professional Development</p>
+              <p class="cert-date"><i class="fa-regular fa-calendar"></i> 2023</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 7. CONTACT ────────────────────────────────────────── -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <div class="section-label" data-aos>Get In Touch</div>
+        <h2 class="section-heading centered" data-aos>Let's <span class="accent-text">Connect</span></h2>
+        <p class="contact-sub" data-aos>Open to Jr. UI/UX Designer roles and internships in Hyderabad, Bengaluru, and Chennai.</p>
+
+        <div class="contact-grid" data-aos>
+          <div class="contact-links">
+            <a href="mailto:siddhardhagudiwada133@gmail.com" class="contact-item">
+              <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="ci-content">
+                <span class="ci-label">Email</span>
+                <span class="ci-value">siddhardhagudiwada133@gmail.com</span>
+              </div>
+              <i class="fa-solid fa-arrow-up-right-from-square ci-arrow"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/siddhartha-gudiwada-9b3584254" target="_blank" class="contact-item">
+              <div class="ci-icon linkedin"><i class="fa-brands fa-linkedin-in"></i></div>
+              <div class="ci-content">
+                <span class="ci-label">LinkedIn</span>
+                <span class="ci-value">siddhartha-gudiwada-9b3584254</span>
+              </div>
+              <i class="fa-solid fa-arrow-up-right-from-square ci-arrow"></i>
+            </a>
+            <a href="https://github.com/Siddhardha-14" target="_blank" class="contact-item">
+              <div class="ci-icon github"><i class="fa-brands fa-github"></i></div>
+              <div class="ci-content">
+                <span class="ci-label">GitHub</span>
+                <span class="ci-value">Siddhardha-14</span>
+              </div>
+              <i class="fa-solid fa-arrow-up-right-from-square ci-arrow"></i>
+            </a>
+          </div>
+
+          <div class="contact-cta-box">
+            <p class="cta-box-text">Ready to bring your product vision to life? Let's talk.</p>
+            <div class="cta-box-buttons">
+              <a href="mailto:siddhardhagudiwada133@gmail.com" class="btn btn-primary">
+                <i class="fa-solid fa-paper-plane"></i> Send Message
+              </a>
+              <a href="resume.html" target="_blank" class="btn btn-outline">
+                <i class="fa-solid fa-download"></i> View Resume
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ───────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© 2026 Siddhartha Gudiwada</span>
+      <span class="footer-dot">·</span>
+      <span>Designed with <i class="fa-brands fa-figma accent-text"></i> Figma</span>
+      <span class="footer-dot">·</span>
+      <span>Built with <i class="fa-solid fa-heart accent-text"></i></span>
+    </div>
+  </footer>
+
+  <!-- CASE STUDY MODAL -->
+  <div class="cs-modal" id="case-study-modal">
+    <div class="cs-backdrop"></div>
+    <div class="cs-panel">
+      <button class="cs-close" aria-label="Close">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <iframe id="case-study-frame" class="cs-frame" src="" title="Vehicle Bay Case Study" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

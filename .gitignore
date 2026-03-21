@@ -1,0 +1,8 @@
+node_modules/
+.DS_Store
+.env
+*.log
+.gemini/
+.idea/
+.vscode/
+vehicle-bay-case-study/node_modules/

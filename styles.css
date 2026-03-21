@@ -572,7 +572,7 @@ body:has(a:hover) .cursor-trail, body:has(button:hover) .cursor-trail {
 /* Featured Box Glow */
 .bento-box.featured {
   grid-column: span 2;
-  grid-row: span 2;
+  grid-row: span 1;
   background: linear-gradient(145deg, var(--bg3) 0%, rgba(26,86,219,0.08) 100%);
   border-color: rgba(26,86,219,0.25);
 }

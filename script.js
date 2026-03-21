@@ -155,3 +155,35 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && csModal.classList.contains('active')) closeCaseStudy();
 });
 
+
+// ── PROCESS STEPPER ───────────────────────────────────────────
+const steps = document.querySelectorAll('.step');
+const phases = document.querySelectorAll('.phase-card');
+const dots = document.querySelectorAll('.p-dot');
+const progress = document.querySelector('.stepper-progress');
+
+if (steps.length > 0) {
+  steps.forEach((step, index) => {
+    step.addEventListener('click', () => {
+      // Update Stepper
+      steps.forEach((s, idx) => {
+        s.classList.toggle('active', idx === index);
+        s.classList.toggle('completed', idx < index);
+      });
+
+      // Update Cards
+      phases.forEach((p, idx) => {
+        p.classList.toggle('active', idx === index);
+      });
+
+      // Update Dots
+      dots.forEach((d, idx) => {
+        d.classList.toggle('active', idx === index);
+      });
+
+      // Update Progress Line
+      const percent = (index / (steps.length - 1)) * 100;
+      progress.style.width = `${percent}%`;
+    });
+  });
+}

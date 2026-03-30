@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Img2DOCX — Case Study · Siddhartha Gudiwada</title>
+  <meta name="description" content="Img2DOCX — A 100% offline, browser-native image to Word converter. Case study by Siddhartha Gudiwada." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── PAGE-SPECIFIC STYLES ──────────────────────────────────── */
+    .cs-hero {
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
+      background: var(--bg);
+    }
+    .cs-hero .hero-blobs { position: absolute; inset: 0; pointer-events: none; }
+    .cs-hero .hero-grid-overlay {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(26,86,219,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(26,86,219,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .cs-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    .cs-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text2);
+      margin-bottom: 28px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .cs-back:hover { color: var(--accent2); transform: translateX(-4px); }
+    .cs-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      background: rgba(26,86,219,0.1);
+      border: 1px solid rgba(26,86,219,0.25);
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+    .cs-hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent2);
+      border-radius: 50%;
+    }
+    .cs-title {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .cs-subtitle {
+      font-size: 1.15rem;
+      color: var(--text2);
+      max-width: 600px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .cs-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+      margin-top: 8px;
+    }
+    .cs-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .cs-meta-label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text3);
+    }
+    .cs-meta-value {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ── SECTION STYLES ──────────────────────────────────────── */
+    .cs-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .cs-section:last-of-type { border-bottom: none; }
+    .cs-section-label {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 12px;
+    }
+    .cs-section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+      line-height: 1.2;
+    }
+    .cs-body-text {
+      font-size: 1rem;
+      color: var(--text2);
+      line-height: 1.8;
+      max-width: 760px;
+    }
+    .cs-body-text + .cs-body-text { margin-top: 16px; }
+
+    /* ── PROBLEM / SOLUTION FULL BLOCKS ──────────────────────── */
+    .cs-ps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    @media (max-width: 720px) { .cs-ps-grid { grid-template-columns: 1fr; } }
+    .cs-ps-card {
+      padding: 32px;
+      border-radius: 20px;
+      border: 1px solid;
+    }
+    .cs-ps-card.problem {
+      background: rgba(239,68,68,0.06);
+      border-color: rgba(239,68,68,0.2);
+    }
+    .cs-ps-card.solution {
+      background: rgba(34,197,94,0.06);
+      border-color: rgba(34,197,94,0.2);
+    }
+    .cs-ps-card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+    .cs-ps-card-title {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .cs-ps-card.problem .cs-ps-card-title { color: #f87171; }
+    .cs-ps-card.solution .cs-ps-card-title { color: #4ade80; }
+    .cs-ps-card p {
+      font-size: 0.95rem;
+      color: var(--text2);
+      line-height: 1.75;
+    }
+    .cs-ps-card ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cs-ps-card ul li {
+      font-size: 0.92rem;
+      color: var(--text2);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.6;
+    }
+    .cs-ps-card.problem ul li::before { content: "✕"; color: #f87171; font-weight: 700; flex-shrink: 0; }
+    .cs-ps-card.solution ul li::before { content: "✓"; color: #4ade80; font-weight: 700; flex-shrink: 0; }
+
+    /* ── HOW IT WORKS — PIPELINE ─────────────────────────────── */
+    .pipeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 36px;
+      position: relative;
+    }
+    .pipeline-line {
+      position: absolute;
+      left: 28px;
+      top: 40px;
+      bottom: 40px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      z-index: 0;
+    }
+    .pipeline-step {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      position: relative;
+      z-index: 1;
+      padding: 24px 32px 24px 0;
+    }
+    .pipeline-step:not(:last-child) {
+      border-bottom: 1px solid var(--border);
+    }
+    .pipeline-num {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(26,86,219,0.12);
+      border: 2px solid rgba(26,86,219,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--accent2);
+    }
+    .pipeline-body h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .pipeline-body p {
+      font-size: 0.9rem;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+    .pipeline-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      background: rgba(26,86,219,0.1);
+      border: 1px solid rgba(26,86,219,0.2);
+      padding: 2px 10px;
+      border-radius: 100px;
+      margin-bottom: 8px;
+    }
+
+    /* ── TECH STACK GRID ─────────────────────────────────────── */
+    .cs-tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .cs-tech-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      transition: var(--transition);
+    }
+    .cs-tech-card:hover {
+      border-color: rgba(26,86,219,0.4);
+      transform: translateY(-3px);
+    }
+    .cs-tech-card-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text3);
+      margin-bottom: 6px;
+    }
+    .cs-tech-card-value {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .cs-tech-card-desc {
+      font-size: 0.78rem;
+      color: var(--text3);
+      margin-top: 4px;
+    }
+
+    /* ── KEY FEATURES ────────────────────────────────────────── */
+    .cs-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .cs-feature-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: var(--transition);
+    }
+    .cs-feature-card:hover {
+      border-color: rgba(26,86,219,0.3);
+      transform: translateY(-3px);
+    }
+    .cs-feature-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(26,86,219,0.12);
+      border: 1px solid rgba(26,86,219,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--accent2);
+      margin-bottom: 14px;
+    }
+    .cs-feature-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .cs-feature-desc {
+      font-size: 0.85rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    /* ── CHALLENGE CARDS ─────────────────────────────────────── */
+    .cs-challenges {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .cs-challenge-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .cs-challenge-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #f87171;
+      flex-shrink: 0;
+    }
+    .cs-challenge-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .cs-challenge-body {
+      font-size: 0.88rem;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+    .cs-challenge-body strong { color: var(--accent2); font-weight: 700; }
+
+    /* ── LEARNINGS ───────────────────────────────────────────── */
+    .cs-learnings {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .cs-learning-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 18px 20px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.88rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+    .cs-learning-item::before {
+      content: "✦";
+      color: var(--accent2);
+      font-size: 0.7rem;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    /* ── CTA SECTION ─────────────────────────────────────────── */
+    .cs-cta {
+      background: linear-gradient(135deg, rgba(26,86,219,0.08), rgba(61,125,247,0.04));
+      border: 1px solid rgba(26,86,219,0.2);
+      border-radius: 24px;
+      padding: 56px 48px;
+      text-align: center;
+      margin: 60px 0;
+    }
+    .cs-cta h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+    .cs-cta p {
+      font-size: 1rem;
+      color: var(--text2);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+    .cs-cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .cs-hero { padding: 100px 0 60px; }
+      .cs-cta { padding: 40px 24px; }
+      .cs-challenge-card { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- ── NAV ──────────────────────────────────────────── -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">SG<span class="dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#about" class="nav-link">About</a></li>
+        <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+        <li><a href="index.html#projects" class="nav-link active">Work</a></li>
+        <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+        <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <a href="resume.html" target="_blank" class="btn btn-outline nav-resume">Resume</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ── HERO ─────────────────────────────────────────── -->
+    <section class="cs-hero">
+      <div class="hero-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+      </div>
+      <div class="hero-grid-overlay"></div>
+      <div class="container cs-hero-content">
+        <a href="index.html#projects" class="cs-back">
+          <i class="fa-solid fa-arrow-left"></i> Back to Work
+        </a>
+        <div class="cs-hero-badge">Dev Tool · 100% Offline · Open Source</div>
+        <h1 class="cs-title">Img<span class="accent-text">2DOCX</span></h1>
+        <p class="cs-subtitle">
+          A browser-native image-to-Word converter that runs entirely on your device. No upload. No account. No server. Just drop an image and get a clean Word document.
+        </p>
+        <div class="cs-meta-row">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Type</span>
+            <span class="cs-meta-value">Dev Tool / Web App</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Platform</span>
+            <span class="cs-meta-value">Browser (100% Local)</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Stack</span>
+            <span class="cs-meta-value">React 19 · Tesseract.js · Vite</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value">Solo Developer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Year</span>
+            <span class="cs-meta-value">2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── PROBLEM & SOLUTION ────────────────────────────── -->
+    <section class="cs-section" style="background: var(--bg2);">
+      <div class="container">
+        <div class="cs-section-label">The Challenge</div>
+        <h2 class="cs-section-title">A problem everyone hits but nobody solves well</h2>
+        <p class="cs-body-text">
+          You've been there — you get a scanned PDF, a screenshot of a table, or a whiteboard photo. The information you need is <em>right there</em>, but you can't select it, copy it, or edit it. So you retype everything by hand. That's the problem.
+        </p>
+        <p class="cs-body-text">
+          And the existing tools? They either cost money, require creating an account, or — most frustratingly — they upload your file to a server. If that file is a medical report, a bank statement, or a confidential contract, that's not acceptable.
+        </p>
+
+        <div class="cs-ps-grid">
+          <div class="cs-ps-card problem">
+            <div class="cs-ps-card-icon">😤</div>
+            <div class="cs-ps-card-title">The Problem</div>
+            <ul>
+              <li>You can't select or copy text that's embedded in an image</li>
+              <li>Online OCR tools upload your files to third-party servers</li>
+              <li>Sensitive documents (medical, legal, financial) get compromised</li>
+              <li>Most tools cost money, require sign-up, or have usage limits</li>
+              <li>Dark-background images (infographics, slides) fail on standard OCR</li>
+            </ul>
+          </div>
+          <div class="cs-ps-card solution">
+            <div class="cs-ps-card-icon">✅</div>
+            <div class="cs-ps-card-title">The Solution</div>
+            <ul>
+              <li>Runs the full OCR pipeline inside your browser — nothing leaves your device</li>
+              <li>Tries 3 different image processing algorithms and picks the best result</li>
+              <li>Handles dark, light, noisy, and high-contrast images automatically</li>
+              <li>Completely free — no account, no upload limit, no subscription</li>
+              <li>Outputs a properly formatted Word document with headings, bullets, paragraphs</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ──────────────────────────────────── -->
+    <section class="cs-section">
+      <div class="container">
+        <div class="cs-section-label">How It Works</div>
+        <h2 class="cs-section-title">From image to Word in 4 steps</h2>
+        <p class="cs-body-text">The app runs a 4-stage pipeline entirely inside your browser. Here's exactly what happens when you click "Convert":</p>
+
+        <div class="pipeline">
+          <div class="pipeline-line"></div>
+
+          <div class="pipeline-step">
+            <div class="pipeline-num">1</div>
+            <div class="pipeline-body">
+              <div class="pipeline-tag">Image Pre-processing</div>
+              <h4>Three versions of your image are created</h4>
+              <p>The browser's Canvas API generates 3 different processed versions of your image simultaneously: <strong>Variant A</strong> — grayscale with Otsu's binarisation (best for clean printed text), <strong>Variant B</strong> — inverts dark backgrounds so white-on-dark text becomes readable, <strong>Variant C</strong> — high-contrast CSS filter pipeline using GPU acceleration, best for noisy or faded images.</p>
+            </div>
+          </div>
+
+          <div class="pipeline-step">
+            <div class="pipeline-num">2</div>
+            <div class="pipeline-body">
+              <div class="pipeline-tag">3-Variant OCR Engine</div>
+              <h4>Tesseract.js reads all 3 and picks the winner</h4>
+              <p>Tesseract.js (a WebAssembly OCR engine) runs on each of the 3 processed images. It counts the meaningful words in each result and keeps whichever version gave the highest word count. This "best-of-three" approach means the tool self-corrects — even if your image has unusual contrast, one of the variants will work.</p>
+            </div>
+          </div>
+
+          <div class="pipeline-step">
+            <div class="pipeline-num">3</div>
+            <div class="pipeline-body">
+              <div class="pipeline-tag">Text Structuring</div>
+              <h4>Raw OCR text is turned into document structure</h4>
+              <p>Raw Tesseract output is messy — it has pipe characters, duplicate lines, orphan symbols, and no concept of headings vs. paragraphs. A custom post-processor cleans everything: it strips noise, detects all-caps headings, identifies bullet lists by prefix characters, deduplicates repeated lines, and groups content into semantic document elements.</p>
+            </div>
+          </div>
+
+          <div class="pipeline-step">
+            <div class="pipeline-num">4</div>
+            <div class="pipeline-body">
+              <div class="pipeline-tag">DOCX Generation</div>
+              <h4>A properly formatted Word document is assembled</h4>
+              <p>docx.js assembles the structured text into a real Microsoft Word file — with Calibri font, justified paragraphs at 12pt, bold headings sized correctly by level, true bullet list paragraphs, and A4 page margins. The file downloads automatically with a timestamped filename. No conversion, no server — it's built locally and handed directly to your browser's download mechanism.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── KEY FEATURES ──────────────────────────────────── -->
+    <section class="cs-section" style="background: var(--bg2);">
+      <div class="container">
+        <div class="cs-section-label">Key Features</div>
+        <h2 class="cs-section-title">What makes it actually useful</h2>
+        <div class="cs-features-grid">
+          <div class="cs-feature-card">
+            <div class="cs-feature-icon"><i class="fa-solid fa-lock"></i></div>
+            <div class="cs-feature-title">100% Private — Zero Upload</div>
+            <div class="cs-feature-desc">Everything runs in your browser. Your images never touch a server. There's no backend, no cloud, no logs.</div>
+          </div>
+          <div class="cs-feature-card">
+            <div class="cs-feature-icon"><i class="fa-solid fa-images"></i></div>
+            <div class="cs-feature-title">Batch Processing</div>
+            <div class="cs-feature-desc">Upload multiple images at once. Each one is processed sequentially with accurate per-image progress tracking.</div>
+          </div>
+          <div class="cs-feature-card">
+            <div class="cs-feature-icon"><i class="fa-solid fa-brain"></i></div>
+            <div class="cs-feature-title">Smart Dark-Image Support</div>
+            <div class="cs-feature-desc">White text on dark backgrounds is automatically detected and inverted before OCR — something most tools fail at completely.</div>
+          </div>
+          <div class="cs-feature-card">
+            <div class="cs-feature-icon"><i class="fa-solid fa-file-word"></i></div>
+            <div class="cs-feature-title">Real Word Formatting</div>
+            <div class="cs-feature-desc">Output has actual headings, bullet lists, and justified paragraphs — not just a wall of unstyled text dumped in a file.</div>
+          </div>
+          <div class="cs-feature-card">
+            <div class="cs-feature-icon"><i class="fa-solid fa-stop"></i></div>
+            <div class="cs-feature-title">Cancel Anytime</div>
+            <div class="cs-feature-desc">Built with AbortController — clicking Cancel immediately terminates running OCR workers and frees all memory. No hanging processes.</div>
+          </div>
+          <div class="cs-feature-card">
+            <div class="cs-feature-icon"><i class="fa-solid fa-wifi-slash"></i></div>
+            <div class="cs-feature-title">Works Offline</div>
+            <div class="cs-feature-desc">Once loaded, the tool works with no internet connection. It uses Tesseract.js WASM which runs entirely on the CPU in your browser.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CHALLENGES ────────────────────────────────────── -->
+    <section class="cs-section">
+      <div class="container">
+        <div class="cs-section-label">Engineering Challenges</div>
+        <h2 class="cs-section-title">Problems I had to solve from scratch</h2>
+        <div class="cs-challenges">
+
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon"><i class="fa-solid fa-sun"></i></div>
+            <div>
+              <div class="cs-challenge-title">Challenge 1 — Dark images destroy standard OCR</div>
+              <div class="cs-challenge-body">Most OCR engines assume black text on a white background. Infographics and presentation slides often flip this — white text on dark panels. Standard processing produces empty or random output on these. <strong>Solution:</strong> Variant B computes the average pixel brightness across the entire image. If it's below 128 (dark image), the image is inverted before binarisation, flipping it to black-on-white for Tesseract to read correctly.</div>
+            </div>
+          </div>
+
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon"><i class="fa-solid fa-shuffle"></i></div>
+            <div>
+              <div class="cs-challenge-title">Challenge 2 — No single pre-processing algorithm works universally</div>
+              <div class="cs-challenge-body">A filter that enhances a clean scan can completely destroy a noisy photograph. There's no single correct approach. <strong>Solution:</strong> Rather than choosing one algorithm, I built three different ones targeting different image types: Otsu thresholding for clean prints, adaptive inversion for dark backgrounds, and GPU-accelerated high-contrast CSS filters for noisy photos. The one returning the most meaningful words wins.</div>
+            </div>
+          </div>
+
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon"><i class="fa-solid fa-trash"></i></div>
+            <div>
+              <div class="cs-challenge-title">Challenge 3 — Raw OCR output is garbage without post-processing</div>
+              <div class="cs-challenge-body">Tesseract produces strings with pipe characters `|`, duplicated lines, single-character orphans, and no semantic structure. <strong>Solution:</strong> A custom text post-processor strips pipes and backslashes, filters lines that are only symbols or fewer than 2 characters, detects repeated character patterns like `------`, deduplicates semantically identical lines, and classifies remaining lines as headings, list items, or paragraphs using heuristic rules.</div>
+            </div>
+          </div>
+
+          <div class="cs-challenge-card">
+            <div class="cs-challenge-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div>
+              <div class="cs-challenge-title">Challenge 4 — Cancelling mid-process without memory leaks</div>
+              <div class="cs-challenge-body">Tesseract.js spawns Web Workers. If the user cancels mid-conversion, those workers can be left running, consuming memory indefinitely. <strong>Solution:</strong> Each `runTesseract()` call returns both the promise and a `terminate()` handle. An AbortSignal listener immediately calls `terminate()` on the active worker the moment the user cancels — cleanly releasing all memory and stopping all computation instantly.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TECH STACK ─────────────────────────────────────── -->
+    <section class="cs-section" style="background: var(--bg2);">
+      <div class="container">
+        <div class="cs-section-label">Tech Stack</div>
+        <h2 class="cs-section-title">Tools & technologies used</h2>
+        <div class="cs-tech-grid">
+          <div class="cs-tech-card">
+            <div class="cs-tech-card-label">Frontend</div>
+            <div class="cs-tech-card-value">React 19</div>
+            <div class="cs-tech-card-desc">UI layer with hooks-based state management</div>
+          </div>
+          <div class="cs-tech-card">
+            <div class="cs-tech-card-label">Build Tool</div>
+            <div class="cs-tech-card-value">Vite 8</div>
+            <div class="cs-tech-card-desc">Fast HMR dev server and optimised production build</div>
+          </div>
+          <div class="cs-tech-card">
+            <div class="cs-tech-card-label">OCR Engine</div>
+            <div class="cs-tech-card-value">Tesseract.js v7</div>
+            <div class="cs-tech-card-desc">WebAssembly OCR — runs 100% in the browser</div>
+          </div>
+          <div class="cs-tech-card">
+            <div class="cs-tech-card-label">Image Processing</div>
+            <div class="cs-tech-card-value">Canvas API</div>
+            <div class="cs-tech-card-desc">Pixel-level algorithms + CSS GPU filter pipeline</div>
+          </div>
+          <div class="cs-tech-card">
+            <div class="cs-tech-card-label">Document Output</div>
+            <div class="cs-tech-card-value">docx.js v9</div>
+            <div class="cs-tech-card-desc">Generates real .docx files with proper formatting</div>
+          </div>
+          <div class="cs-tech-card">
+            <div class="cs-tech-card-label">Animations</div>
+            <div class="cs-tech-card-value">Framer Motion 12</div>
+            <div class="cs-tech-card-desc">Smooth entry animations and progress transitions</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── LEARNINGS ─────────────────────────────────────── -->
+    <section class="cs-section">
+      <div class="container">
+        <div class="cs-section-label">What I Learned</div>
+        <h2 class="cs-section-title">Skills gained building this</h2>
+        <div class="cs-learnings">
+          <div class="cs-learning-item">How to implement Otsu's thresholding algorithm in JavaScript using single-pass pixel histograms</div>
+          <div class="cs-learning-item">Building cancellable Web Worker pipelines with AbortController and clean resource deallocation</div>
+          <div class="cs-learning-item">Generating real, spec-compliant .docx files from scratch with fonts, margins, and true bullet lists</div>
+          <div class="cs-learning-item">Using the Browser Canvas API for GPU-accelerated CSS filter pipelines on pixel data</div>
+          <div class="cs-learning-item">Designing heuristic text classifiers to identify headings, lists, and paragraphs from raw OCR strings</div>
+          <div class="cs-learning-item">Implementing a "best-of-N" selection strategy for self-correcting AI pipelines</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ───────────────────────────────────────────── -->
+    <div class="container">
+      <div class="cs-cta">
+        <h2>See the code or try it yourself</h2>
+        <p>The full source is open on GitHub. Built with React 19, Tesseract.js, and the Browser Canvas API.</p>
+        <div class="cs-cta-buttons">
+          <a href="https://img-to-word-do-cx.vercel.app/" target="_blank" rel="noopener" class="btn btn-primary">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live
+          </a>
+          <a href="index.html#projects" class="btn btn-ghost">
+            <i class="fa-solid fa-arrow-left"></i> Back to All Projects
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer style="border-top: 1px solid var(--border); padding: 32px 0; text-align: center; color: var(--text3); font-size: 0.82rem;">
+    <div class="container">
+      <p>© 2025 Siddhartha Gudiwada · <a href="index.html" style="color: var(--accent2);">Back to Portfolio</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Cursor
+    const cursor = document.getElementById('cursor');
+    const trail = document.getElementById('cursorTrail');
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+    document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; cursor.style.transform = `translate(${tx}px,${ty}px) translate(-50%,-50%)`; });
+    (function animTrail() {
+      cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
+      trail.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
+      requestAnimationFrame(animTrail);
+    })();
+
+    // Navbar scroll
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20), { passive: true });
+
+    // AOS
+    const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('aos-visible'); }), { threshold: 0.1 });
+    document.querySelectorAll('[data-aos]').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>

@@ -647,37 +647,14 @@ body:has(a:hover) .cursor-trail, body:has(button:hover) .cursor-trail {
 }
 .skill-pill.master i { color: var(--accent2); }
 
-/* Figma AI — Figma AI brand gradient (purple → blue) */
+/* Figma AI — same style as Antigravity (master blue) */
 .skill-pill.figma-ai {
-  background: linear-gradient(135deg, rgba(162,89,255,0.15), rgba(26,188,254,0.15));
-  border-color: transparent;
-  outline: 1px solid;
-  outline-color: rgba(162,89,255,0.5);
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(135deg, #a259ff, #1abcfe);
-  position: relative;
+  background: rgba(26,86,219,0.12);
+  border-color: rgba(26,86,219,0.4);
+  color: var(--accent2);
 }
-.skill-pill.figma-ai::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 100px;
-  background: linear-gradient(135deg, rgba(162,89,255,0.12), rgba(26,188,254,0.12));
-  z-index: -1;
-}
-.skill-pill.figma-ai i {
-  color: #a259ff;
-  background: linear-gradient(135deg, #a259ff, #1abcfe);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.skill-pill.figma-ai:hover {
-  outline-color: rgba(162,89,255,0.8);
-  transform: scale(1.05);
-}
+.skill-pill.figma-ai i { color: var(--accent2); }
+
 
 
 

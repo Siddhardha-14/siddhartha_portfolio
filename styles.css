@@ -647,6 +647,20 @@ body:has(a:hover) .cursor-trail, body:has(button:hover) .cursor-trail {
 }
 .skill-pill.master i { color: var(--accent2); }
 
+/* Figma AI — Figma brand purple */
+.skill-pill.figma-ai {
+  background: rgba(162, 89, 255, 0.12);
+  border-color: rgba(162, 89, 255, 0.4);
+  color: #a259ff;
+}
+.skill-pill.figma-ai i { color: #a259ff; }
+.skill-pill.figma-ai:hover {
+  background: rgba(162, 89, 255, 0.2);
+  border-color: rgba(162, 89, 255, 0.6);
+  color: #bf80ff;
+}
+
+
 /* Responsive Bento */
 @media (max-width: 1024px) {
   .skills-bento { grid-template-columns: repeat(2, 1fr); }

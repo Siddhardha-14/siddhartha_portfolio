@@ -960,25 +960,36 @@
           <div class="contact-body-grid">
 
             <!-- Left: Contact Form -->
-            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xpwzkjqz" method="POST">
+            <form class="contact-form" id="contactForm" action="https://formsubmit.co/siddhardhagudiwada133@gmail.com" method="POST">
+              <!-- FormSubmit Anti-Spam & Configuration -->
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_subject" value="New Portfolio Message / Recruiter Inquiry for Siddhartha" />
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
               <div class="form-row-2col">
                 <div class="form-group">
-                  <label class="form-label" for="contactName">Name</label>
-                  <input type="text" id="contactName" name="name" class="form-input" placeholder="Your name" required />
+                  <label class="form-label" for="contactName">Name / Recruiter</label>
+                  <input type="text" id="contactName" name="name" class="form-input" placeholder="Your name or company" required />
                 </div>
                 <div class="form-group">
-                  <label class="form-label" for="contactEmail">Email</label>
-                  <input type="email" id="contactEmail" name="email" class="form-input" placeholder="you@company.com" required />
+                  <label class="form-label" for="contactEmail">Work Email</label>
+                  <input type="email" id="contactEmail" name="email" class="form-input" placeholder="recruiter@company.com" required />
                 </div>
               </div>
               <div class="form-group">
-                <label class="form-label" for="contactMessage">Message</label>
-                <textarea id="contactMessage" name="message" class="form-input form-textarea" placeholder="What are we building?" rows="5" required></textarea>
+                <label class="form-label" for="contactSubject">Subject / Role (Optional)</label>
+                <input type="text" id="contactSubject" name="subject" class="form-input" placeholder="e.g., UI/UX Designer Role / Project Inquiry" />
               </div>
-              <button type="submit" class="btn-send-form">
-                <span>Send message</span>
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              <div class="form-group">
+                <label class="form-label" for="contactMessage">Message</label>
+                <textarea id="contactMessage" name="message" class="form-input form-textarea" placeholder="Tell me about your team, project, or role scope..." rows="4" required></textarea>
+              </div>
+              <button type="submit" class="btn-send-form" id="submitContactBtn">
+                <span id="btnSendText">Send Message</span>
+                <i class="fa-solid fa-paper-plane" id="btnSendIcon"></i>
               </button>
+              <div class="form-status-msg" id="formStatusMsg" aria-live="polite"></div>
             </form>
 
             <!-- Right: Elsewhere Sidebar -->

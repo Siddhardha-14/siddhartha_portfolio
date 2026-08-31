@@ -2287,6 +2287,57 @@ body:has(button:hover) .custom-cursor-follower {
   transform: translate(2px, -2px);
 }
 
+.btn-send-form:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-send-form.loading {
+  background: rgba(229, 164, 59, 0.7) !important;
+  pointer-events: none;
+}
+
+.btn-send-form.success {
+  background: #22c55e !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4) !important;
+}
+
+.btn-send-form.error {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4) !important;
+}
+
+.form-status-msg {
+  display: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-top: 14px;
+  padding: 12px 18px;
+  border-radius: var(--radius-sm);
+  transition: all 0.3s var(--ease-smooth);
+}
+
+.form-status-msg.show-success {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.form-status-msg.show-error {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
 /* Right: Elsewhere Sidebar */
 .contact-elsewhere {
   display: flex;

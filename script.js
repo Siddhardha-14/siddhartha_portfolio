@@ -334,53 +334,142 @@ document.addEventListener('DOMContentLoaded', () => {
     copyEmailBtn.addEventListener('click', async () => {
       try {
         await navigator.clipboard.writeText(targetEmail);
-        if (copyEmailText) copyEmailText.textContent = 'Copied!';
+        if (copyEmailText) copyEmailText.textContent = 'Copied! ✓';
         showToast('✓ Email copied to clipboard: ' + targetEmail);
         setTimeout(() => {
           if (copyEmailText) copyEmailText.textContent = 'Copy Address';
-        }, 2200);
+        }, 2500);
       } catch (err) {
-        showToast('Email: ' + targetEmail);
+        // Fallback for older browser contexts
+        const tempInput = document.createElement('input');
+        tempInput.value = targetEmail;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        if (copyEmailText) copyEmailText.textContent = 'Copied! ✓';
+        showToast('✓ Email copied to clipboard: ' + targetEmail);
+        setTimeout(() => {
+          if (copyEmailText) copyEmailText.textContent = 'Copy Address';
+        }, 2500);
       }
     });
   }
 
-  // Contact Form Submission (AJAX with Mailto fallback)
+  // Contact Form Submission (FormSubmit AJAX with Recruiter Support)
   if (contactForm) {
+    const submitContactBtn = document.getElementById('submitContactBtn') || contactForm.querySelector('.btn-send-form');
+    const btnSendText = document.getElementById('btnSendText');
+    const btnSendIcon = document.getElementById('btnSendIcon');
+    const formStatusMsg = document.getElementById('formStatusMsg');
+
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const sendBtn = contactForm.querySelector('.btn-send-form');
-      const originalHtml = sendBtn ? sendBtn.innerHTML : '';
-      if (sendBtn) {
-        sendBtn.innerHTML = '<span>Sending...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
-        sendBtn.disabled = true;
+
+      const nameInput = document.getElementById('contactName');
+      const emailInput = document.getElementById('contactEmail');
+      const subjectInput = document.getElementById('contactSubject');
+      const messageInput = document.getElementById('contactMessage');
+
+      const name = nameInput ? nameInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const subject = subjectInput ? subjectInput.value.trim() : '';
+      const message = messageInput ? messageInput.value.trim() : '';
+
+      if (!name || !email || !message) {
+        if (formStatusMsg) {
+          formStatusMsg.className = 'form-status-msg show-error';
+          formStatusMsg.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please fill in your name, email, and message.';
+        }
+        return;
       }
 
-      const formData = new FormData(contactForm);
+      // UI: Loading State
+      if (submitContactBtn) {
+        submitContactBtn.disabled = true;
+        submitContactBtn.classList.add('loading');
+      }
+      if (btnSendText) btnSendText.textContent = 'Sending message...';
+      if (btnSendIcon) btnSendIcon.className = 'fa-solid fa-circle-notch fa-spin';
+      if (formStatusMsg) {
+        formStatusMsg.className = 'form-status-msg';
+        formStatusMsg.textContent = '';
+      }
+
+      const payload = {
+        name: name,
+        email: email,
+        subject: subject || 'Portfolio Opportunity / Inquiry',
+        message: message,
+        _subject: `New Portfolio Message from ${name} [${subject || 'Opportunity'}]`,
+        _template: 'table',
+        _captcha: 'false'
+      };
+
       try {
-        const response = await fetch(contactForm.action, {
+        const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
           method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
         });
 
-        if (response.ok) {
+        const data = await response.json();
+
+        if (response.ok && (data.success === 'true' || data.success === true || response.status === 200)) {
+          // Success State
+          if (submitContactBtn) {
+            submitContactBtn.classList.remove('loading');
+            submitContactBtn.classList.add('success');
+          }
+          if (btnSendText) btnSendText.textContent = 'Message Sent! ✓';
+          if (btnSendIcon) btnSendIcon.className = 'fa-solid fa-circle-check';
+
+          if (formStatusMsg) {
+            formStatusMsg.className = 'form-status-msg show-success';
+            formStatusMsg.innerHTML = '<i class="fa-solid fa-circle-check"></i> Thank you! Your message has been sent directly to Siddhartha.';
+          }
+
           showToast('✓ Message sent successfully! Siddhartha will reply soon.');
           contactForm.reset();
+
+          // Reset button back to normal after 5 seconds
+          setTimeout(() => {
+            if (submitContactBtn) {
+              submitContactBtn.disabled = false;
+              submitContactBtn.classList.remove('success');
+            }
+            if (btnSendText) btnSendText.textContent = 'Send Message';
+            if (btnSendIcon) btnSendIcon.className = 'fa-solid fa-paper-plane';
+          }, 5000);
         } else {
-          // Direct fallback submission
-          contactForm.submit();
+          throw new Error(data.message || 'Submission failed');
         }
       } catch (err) {
-        const name = formData.get('name') || '';
-        const message = formData.get('message') || '';
-        window.location.href = `mailto:${targetEmail}?subject=Design%20Opportunity%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(message)}`;
-        showToast('✓ Opening email client to send message...');
-      } finally {
-        if (sendBtn) {
-          sendBtn.innerHTML = originalHtml;
-          sendBtn.disabled = false;
+        console.error('Contact Form Error:', err);
+        // Error State
+        if (submitContactBtn) {
+          submitContactBtn.disabled = false;
+          submitContactBtn.classList.remove('loading');
+          submitContactBtn.classList.add('error');
         }
+        if (btnSendText) btnSendText.textContent = 'Error Sending';
+        if (btnSendIcon) btnSendIcon.className = 'fa-solid fa-triangle-exclamation';
+
+        if (formStatusMsg) {
+          formStatusMsg.className = 'form-status-msg show-error';
+          formStatusMsg.innerHTML = `<i class="fa-solid fa-circle-exclamation"></i> Could not deliver automatically. <a href="mailto:${targetEmail}?subject=Portfolio%20Inquiry%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(message)}" style="color:#ffffff;text-decoration:underline;margin-left:4px;font-weight:700;">Click here to email directly</a>`;
+        }
+
+        setTimeout(() => {
+          if (submitContactBtn) {
+            submitContactBtn.classList.remove('error');
+          }
+          if (btnSendText) btnSendText.textContent = 'Send Message';
+          if (btnSendIcon) btnSendIcon.className = 'fa-solid fa-paper-plane';
+        }, 5000);
       }
     });
   }

@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "echo 'Static site build complete'"
+    "dev": "npx serve . -l 3000",
+    "start": "npx serve . -l 3000",
+    "build": "echo 'Static site ready'"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
   }
 }

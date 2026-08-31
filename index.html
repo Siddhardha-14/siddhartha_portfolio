@@ -4,140 +4,391 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Siddhartha Gudiwada — Jr. UI/UX Designer</title>
+  <title>Siddhartha Gudiwada — Product & UI/UX Designer</title>
   <meta name="description"
-    content="Portfolio of Siddhartha Gudiwada — Jr. UI/UX Designer specializing in AI-augmented design, Figma, and automation." />
+    content="Portfolio of Siddhartha Gudiwada — Product & UI/UX Designer specializing in user research, design systems, AI-native products, and interactive prototypes." />
+  
+  <!-- Fonts: Plus Jakarta Sans & Playfair Display / Instrument Serif -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600;1,700&family=Caveat:wght@600;700&display=swap"
     rel="stylesheet" />
+  
+  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- ── CURSOR ───────────────────────────────────────────────── -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-trail" id="cursorTrail"></div>
+  <!-- ── CUSTOM CURSOR ─────────────────────────────────────────── -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-follower" id="cursorFollower"></div>
 
-  <!-- ── NAV ──────────────────────────────────────────────────── -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-logo">SG<span class="dot">.</span></a>
-      <ul class="nav-links">
+  <!-- ── FLOATING NAVBAR ───────────────────────────────────────── -->
+  <header class="header-nav-wrap" id="headerNav">
+    <nav class="pill-navbar" id="navbar">
+      <a href="#hero" class="nav-brand">
+        <span class="brand-avatar-mini"><img src="assets/photo.jpg" alt="SG" /></span>
+        <span class="brand-name">Siddhartha<span class="dot">.</span></span>
+      </a>
+
+      <ul class="nav-menu">
         <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#tools" class="nav-link">Skills</a></li>
         <li><a href="#projects" class="nav-link">Work</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
-      <a href="resume.html" target="_blank" class="btn btn-outline nav-resume">Resume</a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
 
-  <!-- ── MOBILE MENU ───────────────────────────────────────────── -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#about" class="mobile-link">About</a>
-    <a href="#skills" class="mobile-link">Skills</a>
-    <a href="#projects" class="mobile-link">Work</a>
-    <a href="#experience" class="mobile-link">Experience</a>
-    <a href="#contact" class="mobile-link">Contact</a>
-    <a href="resume.html" target="_blank" class="mobile-link accent">Resume ↗</a>
+      <div class="nav-actions">
+        <a href="resume.html" target="_blank" class="nav-btn-resume">Resume</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ── MOBILE DRAWER ─────────────────────────────────────────── -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+    <div class="drawer-panel">
+      <div class="drawer-top">
+        <span class="brand-name">Siddhartha<span class="dot">.</span></span>
+        <button class="drawer-close" id="drawerClose"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="drawer-links">
+        <a href="#about" class="drawer-link">About</a>
+        <a href="#tools" class="drawer-link">Skills</a>
+        <a href="#projects" class="drawer-link">Work</a>
+        <a href="#experience" class="drawer-link">Experience</a>
+        <a href="#contact" class="drawer-link">Contact</a>
+        <a href="resume.html" target="_blank" class="drawer-link drawer-resume">Resume ↗</a>
+      </div>
+    </div>
   </div>
 
   <main>
 
-    <!-- ── 1. HERO ───────────────────────────────────────────── -->
-    <section class="hero" id="hero">
-      <div class="hero-blobs">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
-      </div>
-      <div class="hero-grid-overlay"></div>
-
-      <div class="hero-content" data-aos>
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          Available for Jr. UI/UX Roles — Hyderabad · Bengaluru · Chennai
-        </div>
-        <h1 class="hero-name">Siddhartha<br><span class="accent-text">Gudiwada</span></h1>
-        <p class="hero-title">Jr. UI/UX Designer &nbsp;|&nbsp; AI-Augmented Design &nbsp;|&nbsp; Figma &amp; Automation
-        </p>
-        <p class="hero-tagline">I design intuitive digital experiences — powered by creativity and modern AI tools.</p>
-        <div class="hero-cta">
-          <a href="#projects" class="btn btn-primary">
-            <i class="fa-solid fa-eye"></i> View My Work
-          </a>
-          <a href="#contact" class="btn btn-ghost">
-            Contact Me <i class="fa-solid fa-arrow-right"></i>
-          </a>
-        </div>
+    <!-- ── 1. HERO SECTION ─────────────────────────────────────── -->
+    <section class="hero-section" id="hero">
+      <!-- Aurora Background Canvas Effect (React Bits) -->
+      <div class="aurora-bg-container" aria-hidden="true">
+        <canvas id="auroraCanvas" class="aurora-canvas"></canvas>
+        <div class="aurora-overlay"></div>
       </div>
 
-      <div class="scroll-indicator">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
-    </section>
+      <div class="container hero-container">
+        
+        <!-- Left Hero Content -->
+        <div class="hero-left" data-aos>
+          
+          <!-- Professional Tag with Corner Frames -->
+          <div class="hero-frame-tag">
+            <span class="corner top-left"></span>
+            <span class="corner top-right"></span>
+            <span class="corner bottom-left"></span>
+            <span class="corner bottom-right"></span>
+            <span class="tag-text">Hello There!</span>
+          </div>
 
-    <!-- ── 2. ABOUT ──────────────────────────────────────────── -->
-    <section class="about section" id="about">
-      <div class="container">
-        <div class="section-label" data-aos>About Me</div>
-        <div class="about-grid">
-          <div class="about-text" data-aos>
-            <h2 class="section-heading">Building experiences that <span class="accent-text">feel right.</span></h2>
-            <p>Good design doesn't announce itself — it just works.<br>
-              I'm a UI/UX Designer who works end-to-end — from the first wireframe to the final developer handoff. I obsess
-              over the details: spacing, hierarchy, flow, and whether every interaction feels effortless for the person
-              using it.</p>
-            <p>At Infotact Solutions, I shaped the UI for PeoplePulse HRMS — designing authentication flows, HR portals,
-              and attendance workflows into clean, functional interfaces that real users depend on.</p>
-            <p>My work spans web, mobile, and wearable platforms. My tool of choice is Figma. My focus is always the
-              user.</p>
-            <p class="hero-badge" style="margin: 20px 0 0 0; width: fit-content; background: rgba(124, 106, 255, 0.1);">
-              <span class="badge-dot" style="background: #7c6aff;"></span>
-              Open to work · Hyderabad · Bengaluru · Chennai
-            </p>
-            <div class="about-chips">
-              <span class="chip"><i class="fa-brands fa-figma"></i> Figma</span>
-              <span class="chip"><i class="fa-solid fa-robot"></i> AI Design Tools</span>
-              <span class="chip"><i class="fa-solid fa-diagram-project"></i> Design Systems</span>
-              <span class="chip"><i class="fa-solid fa-universal-access"></i> WCAG A11y</span>
+          <!-- Hero Headline -->
+          <h1 class="hero-headline">
+            I'm <span class="highlight-name">Siddhartha Gudiwada</span>,<br />
+            <span class="hero-role-text">Product &amp; UI/UX Designer</span><br />
+            <span class="hero-location-text">Based in India.</span>
+          </h1>
+
+          <!-- Hero Subtitle -->
+          <p class="hero-description">
+            I craft intuitive digital experiences and AI-augmented applications with obsessive attention to user psychology, design systems, and seamless micro-interactions.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn-hero-dark">
+              <span>View My Projects</span>
+              <span class="btn-icon-circle"><i class="fa-solid fa-play"></i></span>
+            </a>
+            <a href="#contact" class="btn-hero-outline">
+              <span>Contact Me</span>
+            </a>
+          </div>
+
+          <!-- Quick Highlights -->
+          <div class="hero-meta-strip">
+            <div class="meta-item">
+              <span class="meta-dot"></span>
+              <span>Available for Jr. UI/UX &amp; Product Design Roles</span>
+            </div>
+            <div class="meta-divider">|</div>
+            <div class="meta-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Hyderabad · Bengaluru · Chennai · Remote</span>
             </div>
           </div>
-          <div class="about-avatar" data-aos>
-            <div class="avatar-rings">
-              <div class="ring ring-1"></div>
-              <div class="ring ring-2"></div>
-              <div class="ring ring-3"></div>
+
+        </div>
+
+        <!-- Right Hero Visual with Organic Arch & Floating Badges -->
+        <div class="hero-right" data-aos>
+          <div class="hero-portrait-wrap" id="heroPortraitWrap">
+            
+            <!-- Organic Backdrop Arch -->
+            <div class="portrait-arch-bg"></div>
+
+            <!-- Main Portrait -->
+            <div class="portrait-image-holder">
+              <img src="assets/photo.jpg" alt="Siddhartha Gudiwada" class="portrait-img" id="heroPortraitImg" />
             </div>
-            <div class="avatar-card">
-              <img src="assets/photo.jpg" alt="Siddhartha Gudiwada" class="avatar-img"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
-              <div class="avatar-initials" style="display:none;">SG</div>
-              <div class="avatar-glow"></div>
+
+            <!-- Rotating HIRE ME Circular Badge -->
+            <div class="rotating-badge-wrap" id="rotatingBadge">
+              <svg viewBox="0 0 120 120" class="rotating-badge-svg">
+                <path id="badgeCirclePath" d="M 60, 60 m -46, 0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0" fill="none" />
+                <text class="badge-text">
+                  <textPath href="#badgeCirclePath" startOffset="0%">
+                    • HIRE ME • OPEN TO WORK • HIRE ME • 
+                  </textPath>
+                </text>
+              </svg>
+              <div class="badge-center-icon">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </div>
             </div>
-            <div class="avatar-badge">
-              <i class="fa-solid fa-paintbrush"></i>
+
+            <!-- Floating Badge: UI/UX Designer (Gold) -->
+            <div class="float-badge float-badge-1">
+              <i class="fa-solid fa-palette"></i>
               <span>UI/UX Designer</span>
             </div>
+
+            <!-- Floating Badge: Product Designer (Dark) -->
+            <div class="float-badge float-badge-2">
+              <i class="fa-solid fa-layer-group"></i>
+              <span>Product Designer</span>
+            </div>
+
+            <!-- Floating Badge: AI-Native (Ivory) -->
+            <div class="float-badge float-badge-3">
+              <span class="pulse-indicator"></span>
+              <span>AI-Native Prototyper</span>
+            </div>
+
           </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 2. MARQUEE TICKER (Golden Amber Ribbon) ──────────────── -->
+    <section class="marquee-ticker-section">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span>App Design</span> <span class="marquee-star">✳</span>
+          <span>Website Design</span> <span class="marquee-star">✳</span>
+          <span>Dashboard &amp; SaaS</span> <span class="marquee-star">✳</span>
+          <span>Wireframing</span> <span class="marquee-star">✳</span>
+          <span>Design Systems</span> <span class="marquee-star">✳</span>
+          <span>AI Prototyping</span> <span class="marquee-star">✳</span>
+          <span>User Research</span> <span class="marquee-star">✳</span>
+          <span>Framer &amp; Figma</span> <span class="marquee-star">✳</span>
+          <span>WCAG Accessibility</span> <span class="marquee-star">✳</span>
+          <span>Wearable UI</span> <span class="marquee-star">✳</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <span>App Design</span> <span class="marquee-star">✳</span>
+          <span>Website Design</span> <span class="marquee-star">✳</span>
+          <span>Dashboard &amp; SaaS</span> <span class="marquee-star">✳</span>
+          <span>Wireframing</span> <span class="marquee-star">✳</span>
+          <span>Design Systems</span> <span class="marquee-star">✳</span>
+          <span>AI Prototyping</span> <span class="marquee-star">✳</span>
+          <span>User Research</span> <span class="marquee-star">✳</span>
+          <span>Framer &amp; Figma</span> <span class="marquee-star">✳</span>
+          <span>WCAG Accessibility</span> <span class="marquee-star">✳</span>
+          <span>Wearable UI</span> <span class="marquee-star">✳</span>
         </div>
       </div>
     </section>
 
-    <!-- ── 3. SKILLS ─────────────────────────────────────────── -->
-    <section class="skills section" id="skills">
+    <!-- ── 3. SERVICES SECTION ("Services I Provide") ───────────── -->
+    <section class="services-section" id="services">
       <div class="container">
-        <div class="section-label" data-aos>Skills</div>
-        <h2 class="section-heading centered" data-aos>Modern <span class="accent-text">Tech Stack</span></h2>
+        
+        <!-- Section Header Bar -->
+        <div class="section-header-flex" data-aos>
+          <div>
+            <div class="section-tag">— Services</div>
+            <h2 class="section-title"><span class="highlight-gold">Services</span> I Provide</h2>
+          </div>
+          <a href="#projects" class="btn-pill-action">
+            <span>View All Projects</span>
+            <span class="btn-arrow-circle"><i class="fa-solid fa-arrow-right"></i></span>
+          </a>
+        </div>
+
+        <!-- Services Cards Grid -->
+        <div class="services-grid">
+          
+          <!-- Service 1 -->
+          <div class="service-card" data-aos>
+            <div class="service-icon-box">
+              <i class="fa-solid fa-pen-ruler"></i>
+            </div>
+            <h3 class="service-card-title">UI/UX Design</h3>
+            <p class="service-card-desc">
+              From empathy mapping and user research to wireframes, interactive Figma prototypes, and WCAG-compliant design systems.
+            </p>
+            <a href="#projects" class="service-learn-link">
+              <span>View Case Studies</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-card" data-aos>
+            <div class="service-icon-box">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <h3 class="service-card-title">Application Design</h3>
+            <p class="service-card-desc">
+              Intuitive mobile apps (iOS &amp; Android), Wear OS smartwatches, and enterprise dashboards with seamless navigation patterns.
+            </p>
+            <a href="#projects" class="service-learn-link">
+              <span>Explore Apps</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-card" data-aos>
+            <div class="service-icon-box">
+              <i class="fa-solid fa-laptop-code"></i>
+            </div>
+            <h3 class="service-card-title">Website &amp; SaaS Design</h3>
+            <p class="service-card-desc">
+              High-converting landing pages, SaaS interfaces, and responsive web products built with micro-interactions and clean typography.
+            </p>
+            <a href="#projects" class="service-learn-link">
+              <span>See Web Works</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="service-card" data-aos>
+            <div class="service-icon-box">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h3 class="service-card-title">AI-Native Prototyping</h3>
+            <p class="service-card-desc">
+              Accelerating concept-to-working product pipelines using AI workflows (Lovable, Cursor, v0, Stitch) and automated logic.
+            </p>
+            <a href="#projects" class="service-learn-link">
+              <span>Discover AI Tools</span>
+              <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 4. ABOUT ME SECTION (Deep Forest Green Theme) ────────── -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <div class="about-card-container" data-aos>
+          
+          <div class="about-grid-inner">
+            
+            <!-- Left Side: Portrait Oval & Floating Skills Bubble -->
+            <div class="about-visual-col">
+              <div class="about-oval-wrapper">
+                <div class="about-oval-bg"></div>
+                <img src="assets/photo.jpg" alt="Siddhartha Gudiwada" class="about-portrait-img" />
+                
+                <!-- Floating Skill Badges Clustered around Portrait -->
+                <span class="about-chip-pill chip-pos-1">UI/UX Design</span>
+                <span class="about-chip-pill chip-pos-2">Web &amp; App Design</span>
+                <span class="about-chip-pill chip-pos-3">Design System</span>
+                <span class="about-chip-pill chip-pos-4">Prototype</span>
+                <span class="about-chip-pill chip-pos-5">Dashboard</span>
+                <span class="about-chip-pill chip-pos-6">Wireframe Design</span>
+              </div>
+            </div>
+
+            <!-- Right Side: Narrative & Counters -->
+            <div class="about-content-col">
+              <div class="section-tag text-gold">— About Me</div>
+              <h2 class="about-title">Who is <span class="highlight-gold-italic">Siddhartha Gudiwada?</span></h2>
+              
+              <div class="about-text-body">
+                <p>
+                  I'm a UI/UX &amp; Product Designer who bridges the gap between human user needs, technical feasibility, and business impact. I work across the entire lifecycle — from early research and sketches to design tokens, scalable component libraries, and developer handoffs.
+                </p>
+                <p>
+                  During my internship at <strong>Infotact Solutions</strong>, I owned the UI for <strong>PeoplePulse HRMS</strong> — turning complex authentication flows, employee portals, and attendance tracking into an effortless enterprise experience.
+                </p>
+              </div>
+
+              <!-- Counter Stats (Animated Counters) -->
+              <div class="about-stats-row">
+                <div class="stat-block">
+                  <div class="stat-number-wrap">
+                    <span class="stat-counter" data-target="7">0</span><span class="stat-suffix">+</span>
+                  </div>
+                  <span class="stat-label">Projects Completed</span>
+                </div>
+
+                <div class="stat-block">
+                  <div class="stat-number-wrap">
+                    <span class="stat-counter" data-target="100">0</span><span class="stat-suffix">%</span>
+                  </div>
+                  <span class="stat-label">Offline Privacy Tools</span>
+                </div>
+
+                <div class="stat-block">
+                  <div class="stat-number-wrap">
+                    <span class="stat-counter" data-target="2026">2020</span>
+                  </div>
+                  <span class="stat-label">B.E. Graduate · Ready Now</span>
+                </div>
+              </div>
+
+              <!-- Action Bar & Signature -->
+              <div class="about-actions-row">
+                <a href="resume.html" target="_blank" class="btn-gold-pill">
+                  <span>Download CV / Resume</span>
+                  <span class="btn-icon-white"><i class="fa-solid fa-arrow-down"></i></span>
+                </a>
+                <div class="about-signature-text">
+                  <span>Siddhartha Gudiwada</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 5. MY FAVORITE TOOLS (Bento Box Tech Stack) ─────────── -->
+    <section class="tools-section" id="tools">
+      <div class="container">
+        
+        <!-- Section Header -->
+        <div class="section-center-head" data-aos>
+          <div class="section-tag">— Skills</div>
+          <h2 class="section-title">Modern <span class="highlight-gold">Tech Stack</span></h2>
+          <p class="section-subtitle">A curated mastery of industry-standard design tools, AI-assisted platforms, and front-end engineering.</p>
+        </div>
 
         <div class="skills-bento">
           <!-- Featured: AI Design & Production -->
@@ -145,9 +396,9 @@
             <div class="bento-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Future of Design</div>
             <h3 class="bento-title">AI-Native Production</h3>
             <div class="skill-tags">
-              <div class="skill-pill master"><i class="fa-solid fa-gem"></i> Lovable</div>
+              <div class="skill-pill master"><i class="fa-solid fa-heart"></i> Lovable</div>
               <div class="skill-pill master"><i class="fa-solid fa-terminal"></i> Cursor</div>
-              <div class="skill-pill master"><i class="fa-solid fa-stitching"></i> Stitch</div>
+              <div class="skill-pill master"><i class="fa-solid fa-puzzle-piece"></i> Stitch</div>
               <div class="skill-pill master"><i class="fa-solid fa-code"></i> v0.dev</div>
               <div class="skill-pill master"><i class="fa-solid fa-bolt"></i> Antigravity</div>
               <div class="skill-pill figma-ai"><i class="fa-brands fa-figma"></i> Figma AI</div>
@@ -205,688 +456,574 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
-
-
-    <!-- ── 5. EXPERIENCE & EDUCATION ────────────────────────── -->
-    <section class="experience section" id="experience">
+    <!-- ── 6. SELECTED WORK (Projects — Primary Content) ──────── -->
+    <section class="projects-section" id="projects">
       <div class="container">
-        <div class="section-label" data-aos>Journey</div>
-        <h2 class="section-heading centered" data-aos>Experience &amp; <span class="accent-text">Education</span></h2>
-        <div class="timeline">
+        
+        <!-- Header & Category Filters -->
+        <div class="projects-header-wrap" data-aos>
+          <div>
+            <div class="section-tag">— Selected Work</div>
+            <h2 class="section-title">Projects that <span class="highlight-gold">Deliver Impact</span></h2>
+          </div>
 
-          <div class="timeline-item" data-aos>
-            <div class="timeline-icon work"><i class="fa-solid fa-briefcase"></i></div>
-            <div class="timeline-card">
-              <div class="tl-meta">
-                <span class="tl-type">Work</span>
-                <span class="tl-year">2024</span>
+          <div class="project-filter-tabs">
+            <button class="filter-btn active" data-filter="all">
+              <i class="fa-solid fa-shapes"></i>
+              <span>All Projects</span>
+            </button>
+            <button class="filter-btn" data-filter="uiux">
+              <i class="fa-solid fa-pen-ruler"></i>
+              <span>UI/UX Case Studies</span>
+            </button>
+            <button class="filter-btn" data-filter="ai">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>AI &amp; Web Apps</span>
+            </button>
+            <button class="filter-btn" data-filter="iot">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <span>IoT &amp; Wearables</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-list-wrap">
+
+          <!-- ── Project 1: FoodBridge ── -->
+          <article class="project-showcase-card" data-category="ai" data-aos>
+            <div class="project-preview-side" style="background-image: url('assets/foodbridge.png');">
+              <span class="project-category-badge badge-ai">AI-Native · Full-Stack</span>
+            </div>
+            <div class="project-info-side">
+              <div class="project-title-area">
+                <h3 class="project-name">FoodBridge</h3>
+                <p class="project-tagline">Connecting Surplus to Service</p>
+              </div>
+              <div class="project-role-meta">
+                <span><i class="fa-solid fa-user"></i> Role: Product Designer &amp; Developer</span>
+                <span><i class="fa-regular fa-clock"></i> Solo Project · 2025</span>
+              </div>
+              <div class="project-tech-tags">
+                <span class="tech-chip master">Lovable AI</span>
+                <span class="tech-chip">React</span>
+                <span class="tech-chip">TypeScript</span>
+                <span class="tech-chip">Supabase</span>
+                <span class="tech-chip">Twilio Voice</span>
+                <span class="tech-chip">Framer Motion</span>
+              </div>
+              <p class="project-summary">
+                A food rescue ecosystem connecting restaurants with surplus food to NGOs and volunteers. Features real-time listings, automated Twilio voice confirmations, and impact analytics.
+              </p>
+              <div class="project-problem-solution">
+                <div class="ps-mini-box problem">
+                  <span class="ps-label">⚠ Problem:</span>
+                  <span>Huge restaurant food waste while NGOs struggle with urgent coordination.</span>
+                </div>
+                <div class="ps-mini-box solution">
+                  <span class="ps-label">✦ Solution:</span>
+                  <span>Live claims, automated phone dispatch, and real-time coordinator dashboards.</span>
+                </div>
+              </div>
+              <div class="project-actions-row">
+                <a href="https://hungry-hearts-link.lovable.app" target="_blank" rel="noopener" class="btn-project-primary">
+                  <span>View Live App</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 2: Vehicle Bay ── -->
+          <article class="project-showcase-card reverse" data-category="uiux" data-aos>
+            <div class="project-preview-side" style="background-image: url('assets/vehicle-bay.png');">
+              <span class="project-category-badge badge-design">UI/UX Case Study</span>
+            </div>
+            <div class="project-info-side">
+              <div class="project-title-area">
+                <h3 class="project-name">Vehicle Bay</h3>
+                <p class="project-tagline">Smart Parking Slot Reservation</p>
+              </div>
+              <div class="project-role-meta">
+                <span><i class="fa-solid fa-user"></i> Role: Lead UI/UX Designer</span>
+                <span><i class="fa-regular fa-clock"></i> Academic Project · 2024</span>
+              </div>
+              <div class="project-tech-tags">
+                <span class="tech-chip">Figma</span>
+                <span class="tech-chip">User Research</span>
+                <span class="tech-chip">Mobile UI</span>
+                <span class="tech-chip">Design System</span>
+                <span class="tech-chip">React Prototype</span>
+              </div>
+              <p class="project-summary">
+                End-to-end UI/UX case study for smart parking slot booking — from user interviews, problem scoping, and wireframes to high-fidelity interactive Figma flows and React prototyping.
+              </p>
+              <div class="project-problem-solution">
+                <div class="ps-mini-box problem">
+                  <span class="ps-label">⚠ Problem:</span>
+                  <span>Commuters waste up to 20 minutes circling lots with zero slot visibility.</span>
+                </div>
+                <div class="ps-mini-box solution">
+                  <span class="ps-label">✦ Solution:</span>
+                  <span>Live visual lot map, instant reservation, and contactless QR entrance check-in.</span>
+                </div>
+              </div>
+              <div class="project-actions-row">
+                <a href="https://group-share-28476166.figma.site" target="_blank" rel="noopener" class="btn-project-primary">
+                  <span>Read Case Study</span>
+                  <i class="fa-solid fa-book-open"></i>
+                </a>
+                <a href="https://www.figma.com/proto/KLlM84Icr7t7cINou8gFzW/Vehicle-parking?node-id=2-4&p=f&t=EWaJiZ0sonMa631k-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1" target="_blank" rel="noopener" class="btn-project-outline">
+                  <span>Figma Prototype</span>
+                  <i class="fa-brands fa-figma"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 3: PeoplePulse HRMS ── -->
+          <article class="project-showcase-card" data-category="uiux" data-aos>
+            <div class="project-preview-side" style="background-image: url('assets/hrms.png');">
+              <span class="project-category-badge badge-gold">Infotact Internship</span>
+            </div>
+            <div class="project-info-side">
+              <div class="project-title-area">
+                <h3 class="project-name">PeoplePulse HRMS</h3>
+                <p class="project-tagline">Enterprise Human Resource Management</p>
+              </div>
+              <div class="project-role-meta">
+                <span><i class="fa-solid fa-user"></i> Role: UI Designer Intern</span>
+                <span><i class="fa-regular fa-clock"></i> Infotact Solutions · 2024</span>
+              </div>
+              <div class="project-tech-tags">
+                <span class="tech-chip">Figma</span>
+                <span class="tech-chip">Enterprise UX</span>
+                <span class="tech-chip">Dashboard Design</span>
+                <span class="tech-chip">Attendance Flows</span>
+                <span class="tech-chip">Dev Handoff</span>
+              </div>
+              <p class="project-summary">
+                Designed a complete enterprise HR system delivered during an internship at Infotact Solutions — featuring authentication, self-service portals, attendance logging, and leave management dashboards.
+              </p>
+              <div class="project-problem-solution">
+                <div class="ps-mini-box problem">
+                  <span class="ps-label">⚠ Problem:</span>
+                  <span>Legacy HR software caused high error rates and slow managerial approvals.</span>
+                </div>
+                <div class="ps-mini-box solution">
+                  <span class="ps-label">✦ Solution:</span>
+                  <span>Role-tailored dashboards with 1-click approvals and real-time attendance insights.</span>
+                </div>
+              </div>
+              <div class="project-actions-row">
+                <a href="https://www.figma.com/proto/1t9yl5vwHBGHOciPBaqNC6/PeoplePulse-HRMS?node-id=181-342&t=l7ZBai08M7IyKYtv-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank" rel="noopener" class="btn-project-primary">
+                  <span>Explore Figma Prototype</span>
+                  <i class="fa-brands fa-figma"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 4: NexusHome ── -->
+          <article class="project-showcase-card reverse" data-category="iot" data-aos>
+            <div class="project-preview-side" style="background-image: url('assets/nexushome.png');">
+              <span class="project-category-badge badge-purple">IoT &amp; Mobile UI</span>
+            </div>
+            <div class="project-info-side">
+              <div class="project-title-area">
+                <h3 class="project-name">NexusHome</h3>
+                <p class="project-tagline">Smart Home Control — Dark Mode First</p>
+              </div>
+              <div class="project-role-meta">
+                <span><i class="fa-solid fa-user"></i> Role: UI/UX Designer &amp; Developer</span>
+                <span><i class="fa-regular fa-clock"></i> Personal Project · 2025</span>
+              </div>
+              <div class="project-tech-tags">
+                <span class="tech-chip">Figma</span>
+                <span class="tech-chip">Dark Mode UI</span>
+                <span class="tech-chip">IoT Design</span>
+                <span class="tech-chip">Glassmorphism</span>
+                <span class="tech-chip">React</span>
+              </div>
+              <p class="project-summary">
+                Premium dark-mode IoT mobile application for smart home automation. Features quick scene scheduling, contextual room cards, and sleek micro-interactions for connected appliances.
+              </p>
+              <div class="project-problem-solution">
+                <div class="ps-mini-box problem">
+                  <span class="ps-label">⚠ Problem:</span>
+                  <span>Smart home interfaces are technical, confusing, and tedious to configure.</span>
+                </div>
+                <div class="ps-mini-box solution">
+                  <span class="ps-label">✦ Solution:</span>
+                  <span>1-tap scene routines, ambient room cards, and progressive setup flows.</span>
+                </div>
+              </div>
+              <div class="project-actions-row">
+                <a href="https://nexus-home-ui-a.vercel.app/" target="_blank" rel="noopener" class="btn-project-primary">
+                  <span>View Live Web App</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+                <a href="https://www.figma.com/proto/TSQ4LdLya244WE1ItqVJCt/NexusHome?node-id=305-1092&p=f&t=RH6P7it20tvtwIYg-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=305%3A1075&show-proto-sidebar=1" target="_blank" rel="noopener" class="btn-project-outline">
+                  <span>Figma Prototype</span>
+                  <i class="fa-brands fa-figma"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 5: Smart Agri Hub ── -->
+          <article class="project-showcase-card" data-category="uiux" data-aos>
+            <div class="project-preview-side" style="background-image: url('assets/agri-hub.png');">
+              <span class="project-category-badge badge-green">AgriTech &amp; A11y</span>
+            </div>
+            <div class="project-info-side">
+              <div class="project-title-area">
+                <h3 class="project-name">Smart Agri Hub</h3>
+                <p class="project-tagline">Farmer Support &amp; Crop Health Companion</p>
+              </div>
+              <div class="project-role-meta">
+                <span><i class="fa-solid fa-user"></i> Role: UX Researcher &amp; UI Designer</span>
+                <span><i class="fa-regular fa-clock"></i> Academic Project · 2024</span>
+              </div>
+              <div class="project-tech-tags">
+                <span class="tech-chip">Figma</span>
+                <span class="tech-chip">User Research</span>
+                <span class="tech-chip">Accessibility (A11y)</span>
+                <span class="tech-chip">AgriTech</span>
+                <span class="tech-chip">Data Viz</span>
+              </div>
+              <p class="project-summary">
+                Accessible mobile application UI for rural farmers — providing real-time crop disease diagnosis, local market commodity prices, weather alerts, and direct agricultural expert chat.
+              </p>
+              <div class="project-problem-solution">
+                <div class="ps-mini-box problem">
+                  <span class="ps-label">⚠ Problem:</span>
+                  <span>Rural farmers lack timely advice on market prices and pest control.</span>
+                </div>
+                <div class="ps-mini-box solution">
+                  <span class="ps-label">✦ Solution:</span>
+                  <span>High-contrast visual design, vernacular support, and one-tap camera diagnosis.</span>
+                </div>
+              </div>
+              <div class="project-actions-row">
+                <a href="https://www.figma.com/proto/SFUvgEF0gZQZfWqviDpEAz/smart-agri-hub?node-id=1-2&p=f&t=wrppLoUHTUE9TsvA-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2" target="_blank" rel="noopener" class="btn-project-primary">
+                  <span>View Figma Prototype</span>
+                  <i class="fa-brands fa-figma"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 6: Smartwatch Bus Booking ── -->
+          <article class="project-showcase-card reverse" data-category="iot" data-aos>
+            <div class="project-preview-side" style="background-image: url('assets/smartwatch.png');">
+              <span class="project-category-badge badge-purple">Wear OS · Smartwatch</span>
+            </div>
+            <div class="project-info-side">
+              <div class="project-title-area">
+                <h3 class="project-name">Smartwatch Bus Booking</h3>
+                <p class="project-tagline">Glanceable. Thumb-Friendly. Transit UX.</p>
+              </div>
+              <div class="project-role-meta">
+                <span><i class="fa-solid fa-user"></i> Role: Wearable UI Designer</span>
+                <span><i class="fa-regular fa-clock"></i> Personal Project · 2024</span>
+              </div>
+              <div class="project-tech-tags">
+                <span class="tech-chip">Wear OS</span>
+                <span class="tech-chip">Figma</span>
+                <span class="tech-chip">Circular Constraints</span>
+                <span class="tech-chip">Smart Animate</span>
+                <span class="tech-chip">Micro-interactions</span>
+              </div>
+              <p class="project-summary">
+                Glanceable wearable UI designed strictly within circular watch viewport constraints. Allows commuters to check upcoming bus arrivals, reserve seats, and board with an on-wrist QR code.
+              </p>
+              <div class="project-problem-solution">
+                <div class="ps-mini-box problem">
+                  <span class="ps-label">⚠ Problem:</span>
+                  <span>Pulling out phones while boarding crowded buses is inconvenient and risky.</span>
+                </div>
+                <div class="ps-mini-box solution">
+                  <span class="ps-label">✦ Solution:</span>
+                  <span>Wrist-first quick swipes, haptic feedback, and instant NFC/QR ticket scanning.</span>
+                </div>
+              </div>
+              <div class="project-actions-row">
+                <a href="https://www.figma.com/design/enGsbnl8r9GbRpZVPMkGqC/Bus-booking-intf?node-id=5-12&p=f&t=2xuiaGbarHGpexSP-0" target="_blank" rel="noopener" class="btn-project-primary">
+                  <span>Explore Watch UI on Figma</span>
+                  <i class="fa-brands fa-figma"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ── Project 7: Img2DOCX ── -->
+          <article class="project-showcase-card" data-category="ai" data-aos>
+            <div class="project-preview-side" style="background-image: url('assets/img2docx.png');">
+              <span class="project-category-badge badge-ai">100% Offline · In-Browser</span>
+            </div>
+            <div class="project-info-side">
+              <div class="project-title-area">
+                <h3 class="project-name">Img2DOCX</h3>
+                <p class="project-tagline">Browser-Native Image to Editable Word Document</p>
+              </div>
+              <div class="project-role-meta">
+                <span><i class="fa-solid fa-user"></i> Role: Full-Stack Designer &amp; Developer</span>
+                <span><i class="fa-regular fa-clock"></i> Solo Project · 2025</span>
+              </div>
+              <div class="project-tech-tags">
+                <span class="tech-chip master">Tesseract.js</span>
+                <span class="tech-chip">React 19</span>
+                <span class="tech-chip">Vite</span>
+                <span class="tech-chip">Canvas API</span>
+                <span class="tech-chip">docx.js</span>
+              </div>
+              <p class="project-summary">
+                Converts scanned documents, whiteboard photos, and receipts into formatted Microsoft Word files entirely client-side. Zero server uploads, zero API fees, and 100% data privacy.
+              </p>
+              <div class="project-problem-solution">
+                <div class="ps-mini-box problem">
+                  <span class="ps-label">⚠ Problem:</span>
+                  <span>Online OCR converters require uploading private documents to external servers.</span>
+                </div>
+                <div class="ps-mini-box solution">
+                  <span class="ps-label">✦ Solution:</span>
+                  <span>3-variant local OCR preprocessing engine running inside WebAssembly in the browser.</span>
+                </div>
+              </div>
+              <div class="project-actions-row">
+                <a href="img2docx.html" class="btn-project-primary">
+                  <span>Deep-Dive Case Study</span>
+                  <i class="fa-solid fa-book-open"></i>
+                </a>
+                <a href="https://img-to-word-do-cx.vercel.app/" target="_blank" rel="noopener" class="btn-project-outline">
+                  <span>Try Live Tool</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 7. EXPERIENCE & EDUCATION ────────────────────────────── -->
+    <section class="experience-section" id="experience">
+      <div class="container">
+        
+        <div class="section-center-head" data-aos>
+          <div class="section-tag">— Journey</div>
+          <h2 class="section-title">Experience &amp; <span class="highlight-gold">Education</span></h2>
+        </div>
+
+        <div class="timeline-container">
+          
+          <!-- Experience Item -->
+          <div class="timeline-card-item" data-aos>
+            <div class="tl-icon-badge work">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <div class="tl-content-card">
+              <div class="tl-header-row">
+                <span class="tl-badge work-badge">Work Experience</span>
+                <span class="tl-date-pill">2024</span>
               </div>
               <h3 class="tl-title">UI Designer Intern</h3>
-              <p class="tl-company"><i class="fa-solid fa-building"></i> Infotact Solutions — PeoplePulse HRMS</p>
-              <p class="tl-desc">Designed an enterprise HRMS product. Collaborated cross-functionally
-                with product managers and dev teams. Delivered auth flows, employee portal, attendance and leave
-                management UI.</p>
-              <div class="tl-tags">
-                <span class="tag">Figma</span><span class="tag">UI Design</span><span
-                  class="tag">Prototyping</span><span class="tag">Handoff</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="timeline-item" data-aos>
-            <div class="timeline-icon edu"><i class="fa-solid fa-graduation-cap"></i></div>
-            <div class="timeline-card">
-              <div class="tl-meta">
-                <span class="tl-type edu-type">Education</span>
-                <span class="tl-year">2022 – 2026</span>
-              </div>
-              <h3 class="tl-title">B.E. Electronics &amp; Communication Engineering</h3>
-              <p class="tl-company"><i class="fa-solid fa-school"></i> Kalasalingam Academy of Research and Education
+              <h4 class="tl-company"><i class="fa-solid fa-building"></i> Infotact Solutions — PeoplePulse HRMS</h4>
+              <p class="tl-body">
+                Led the user interface design for an enterprise HRMS platform. Collaborated directly with engineering and product leads to ship authentication, employee directories, and leave/attendance portals in Figma.
               </p>
-              <p class="tl-desc">CGPA: 7.25/10 · Graduating 2026. Studied signal processing, embedded systems, and
-                communication networks while building a strong front-end and design skill set alongside.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 5. HOW I DESIGN ───────────────────────────────────── -->
-    <section class="process section" id="process">
-      <div class="container">
-        <div class="section-label" data-aos>MY PROCESS</div>
-        <h2 class="section-heading centered" data-aos>How I <span class="accent-text">Design</span></h2>
-        <p class="contact-sub" data-aos style="margin-top:-36px; margin-bottom:56px;">"A Double Diamond approach — structured enough to be rigorous, flexible enough to move fast."</p>
-
-        <div class="process-stepper" data-aos>
-          <div class="stepper-line">
-            <div class="stepper-progress" id="stepperProgress"></div>
-          </div>
-          
-          <button class="step active" data-phase="0">
-            <div class="step-badge">
-              <span class="step-num">1</span>
-              <i class="fa-solid fa-check step-check"></i>
-            </div>
-            <span class="step-label">Discover</span>
-          </button>
-          
-          <button class="step" data-phase="1">
-            <div class="step-badge">
-              <span class="step-num">2</span>
-              <i class="fa-solid fa-check step-check"></i>
-            </div>
-            <span class="step-label">Define</span>
-          </button>
-          
-          <button class="step" data-phase="2">
-            <div class="step-badge">
-              <span class="step-num">3</span>
-              <i class="fa-solid fa-check step-check"></i>
-            </div>
-            <span class="step-label">Design</span>
-          </button>
-          
-          <button class="step" data-phase="3">
-            <div class="step-badge">
-              <span class="step-num">4</span>
-              <i class="fa-solid fa-check step-check"></i>
-            </div>
-            <span class="step-label">Deliver</span>
-          </button>
-        </div>
-
-        <div class="process-content" data-aos>
-          <!-- Phase 01 -->
-          <div class="phase-card active">
-            <span class="phase-tag">PHASE 01 · DISCOVER</span>
-            <h3 class="phase-title">Research & Discovery</h3>
-            <p class="phase-desc">"Before touching Figma, I study the problem. I talk to users, review existing flows, and identify pain points. Every assumption gets challenged before a single screen is designed."</p>
-            <div class="phase-grid">
-              <div>
-                <span class="phase-col-label">Tools & Methods</span>
-                <div class="phase-methods">
-                  <span class="method-tag">User Interviews</span>
-                  <span class="method-tag">Heuristic Audits</span>
-                  <span class="method-tag">Competitive Analysis</span>
-                  <span class="method-tag">Analytics Review</span>
-                </div>
-              </div>
-              <div class="phase-outcome">
-                <span class="phase-col-label">Outcome</span>
-                <p class="outcome-text">✦ Validated problem statement backed by real user pain points.</p>
+              <div class="tl-skills-tags">
+                <span>Figma</span>
+                <span>Enterprise UI</span>
+                <span>User Flows</span>
+                <span>Design Systems</span>
+                <span>Handoff</span>
               </div>
             </div>
           </div>
 
-          <!-- Phase 02 -->
-          <div class="phase-card">
-            <span class="phase-tag">PHASE 02 · DEFINE</span>
-            <h3 class="phase-title">Synthesise & Define</h3>
-            <p class="phase-desc">"I translate research into clear design opportunities. User needs, business goals, and technical constraints are mapped together into a focused problem statement and design brief."</p>
-            <div class="phase-grid">
-              <div>
-                <span class="phase-col-label">Tools & Methods</span>
-                <div class="phase-methods">
-                  <span class="method-tag">Affinity Mapping</span>
-                  <span class="method-tag">Jobs-to-be-Done</span>
-                  <span class="method-tag">Journey Maps</span>
-                  <span class="method-tag">How Might We</span>
-                </div>
-              </div>
-              <div class="phase-outcome">
-                <span class="phase-col-label">Outcome</span>
-                <p class="outcome-text">✦ A sharp, agreed-upon design brief with clear success metrics.</p>
-              </div>
+          <!-- Education Item 1: B.E. Degree -->
+          <div class="timeline-card-item" data-aos>
+            <div class="tl-icon-badge edu">
+              <i class="fa-solid fa-graduation-cap"></i>
             </div>
-          </div>
-
-          <!-- Phase 03 -->
-          <div class="phase-card">
-            <span class="phase-tag">PHASE 03 · DESIGN</span>
-            <h3 class="phase-title">Ideate & Prototype</h3>
-            <p class="phase-desc">"Low-fi sketches first, then Figma. Every component is built for the design system first, an isolated screen second. I prototype fast and iterate faster."</p>
-            <div class="phase-grid">
-              <div>
-                <span class="phase-col-label">Tools & Methods</span>
-                <div class="phase-methods">
-                  <span class="method-tag">Figma</span>
-                  <span class="method-tag">Crazy 8s</span>
-                  <span class="method-tag">Component Systems</span>
-                  <span class="method-tag">WCAG Checks</span>
-                </div>
+            <div class="tl-content-card">
+              <div class="tl-header-row">
+                <span class="tl-badge edu-badge">Higher Education</span>
+                <span class="tl-date-pill">2022 – 2026</span>
               </div>
-              <div class="phase-outcome">
-                <span class="phase-col-label">Outcome</span>
-                <p class="outcome-text">✦ High-fidelity, interactive prototype validated against real user flows.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Phase 04 -->
-          <div class="phase-card">
-            <span class="phase-tag">PHASE 04 · DELIVER</span>
-            <h3 class="phase-title">Test & Ship</h3>
-            <p class="phase-desc">"Designs are tested with real users before handoff. I document every screen with specs, interaction notes, edge cases, and accessibility annotations so developers can build with zero guesswork."</p>
-            <div class="phase-grid">
-              <div>
-                <span class="phase-col-label">Tools & Methods</span>
-                <div class="phase-methods">
-                  <span class="method-tag">Usability Testing</span>
-                  <span class="method-tag">A/B Testing</span>
-                  <span class="method-tag">Dev Handoff</span>
-                  <span class="method-tag">Design Specs</span>
-                </div>
-              </div>
-              <div class="phase-outcome">
-                <span class="phase-col-label">Outcome</span>
-                <p class="outcome-text">✦ Shipped product with clean handoff, tested flows, and zero ambiguity.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="phase-dots">
-          <div class="p-dot active"></div>
-          <div class="p-dot"></div>
-          <div class="p-dot"></div>
-          <div class="p-dot"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 6. PROJECTS ───────────────────────────────────────── -->
-    <section class="projects section" id="projects">
-      <div class="container">
-        <div class="section-label" data-aos>Featured Work</div>
-        <h2 class="section-heading centered" data-aos>Projects that <span class="accent-text">matter.</span></h2>
-        <div class="projects-list">
-
-          <!-- ── Project 0 — FoodBridge ── Details RIGHT · Image LEFT -->
-          <article class="pcard" data-aos>
-            <div class="pcard-img" style="background-image:url('assets/foodbridge.png');">
-              <span class="pcard-badge badge-ai">AI-Native / Full-stack</span>
-            </div>
-            <div class="pcard-body">
-              <div>
-                <h3 class="pcard-title">FoodBridge</h3>
-                <p class="pcard-tagline">Connecting Surplus to Service</p>
-              </div>
-              <div class="pcard-chips">
-                <span class="pchip master">Lovable</span>
-                <span class="pchip">React</span>
-                <span class="pchip">TypeScript</span>
-                <span class="pchip">Supabase</span>
-                <span class="pchip">Twilio</span>
-                <span class="pchip">Framer Motion</span>
-              </div>
-              <p class="pcard-desc">A comprehensive food rescue ecosystem connecting restaurants with surplus food to
-                NGOs and volunteers. Features real-time listings, automated Twilio voice confirmations, and impact
-                analytics. <br><strong>(Note: Use email login to access the interactive dashboards)</strong></p>
-              <div class="pcard-role">
-                <div class="pcard-role-label">My Role</div>
-                <p>Full-stack Developer — Architected and built the entire application using AI-native workflows
-                  (Lovable & Cursor) for rapid deployment.</p>
-              </div>
-              <div class="pcard-ps">
-                <div class="ps-box ps-problem">
-                  <div class="ps-box-label">⚠ Problem</div>
-                  <p>Huge food waste in restaurants while NGOs struggle to find timely donations or volunteers for
-                    pickup.</p>
-                </div>
-                <div class="ps-box ps-solution">
-                  <div class="ps-box-label">✦ Solution</div>
-                  <p>Real-time listing & claiming with automated Twilio dispatch and role-based dashboards for seamless
-                    coordination.</p>
-                </div>
-              </div>
-              <div class="pcard-process">
-                <span class="proc-step">AI Prototyping</span><span class="proc-dot"></span>
-                <span class="proc-step">System Architecture</span><span class="proc-dot"></span>
-                <span class="proc-step">Database Design</span><span class="proc-dot"></span>
-                <span class="proc-step">Twilio Integration</span><span class="proc-dot"></span>
-                <span class="proc-step">Deploy</span>
-              </div>
-              <div class="pcard-foot">
-                <a href="https://hungry-hearts-link.lovable.app" target="_blank" rel="noopener"
-                  class="btn btn-primary btn-sm">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live
-                </a>
-              </div>
-            </div>
-          </article>
-          <article class="pcard" data-aos>
-            <div class="pcard-img" style="background-image:url('assets/vehicle-bay.png');">
-              <span class="pcard-badge">UI/UX Design</span>
-            </div>
-            <div class="pcard-body">
-              <div>
-                <h3 class="pcard-title">Vehicle Bay</h3>
-                <p class="pcard-tagline">Smart Parking, Simplified</p>
-              </div>
-              <div class="pcard-chips">
-                <span class="pchip">Figma</span>
-                <span class="pchip">User Research</span>
-                <span class="pchip">React</span>
-                <span class="pchip">Mobile UI</span>
-                <span class="pchip">Prototyping</span>
-              </div>
-              <p class="pcard-desc">A complete UI/UX case study for a smart parking slot booking mobile app — from user
-                research and personas to high-fidelity screens and a working React prototype.</p>
-              <div class="pcard-role">
-                <div class="pcard-role-label">My Role</div>
-                <p>Lead UI/UX Designer — end-to-end; user research, information architecture, wireframes, visual design,
-                  and React prototype.</p>
-              </div>
-              <div class="pcard-ps">
-                <div class="ps-box ps-problem">
-                  <div class="ps-box-label">⚠ Problem</div>
-                  <p>Drivers waste time circling lots; no real-time slot visibility or advance booking.</p>
-                </div>
-                <div class="ps-box ps-solution">
-                  <div class="ps-box-label">✦ Solution</div>
-                  <p>Live map view, slot reservation, QR check-in, and contactless payment in one flow.</p>
-                </div>
-              </div>
-              <div class="pcard-process">
-                <span class="proc-step">Research</span><span class="proc-dot"></span>
-                <span class="proc-step">Personas</span><span class="proc-dot"></span>
-                <span class="proc-step">Wireframes</span><span class="proc-dot"></span>
-                <span class="proc-step">Visual Design</span><span class="proc-dot"></span>
-                <span class="proc-step">Prototype</span>
-              </div>
-              <div class="pcard-foot">
-                <a href="https://group-share-28476166.figma.site" target="_blank" rel="noopener"
-                  class="btn btn-primary btn-sm">
-                  <i class="fa-solid fa-book-open"></i> Read Case Study
-                </a>
-                <a href="https://www.figma.com/proto/KLlM84Icr7t7cINou8gFzW/Vehicle-parking?node-id=2-4&p=f&t=EWaJiZ0sonMa631k-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2&show-proto-sidebar=1"
-                  target="_blank" rel="noopener" class="btn btn-outline btn-sm">
-                  <i class="fa-brands fa-figma"></i> View on Figma
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- ── Project 2 — PeoplePulse HRMS ── Details LEFT · Image RIGHT -->
-          <article class="pcard reverse" data-aos>
-            <div class="pcard-img" style="background-image:url('assets/hrms.png');">
-              <span class="pcard-badge badge-gold">Internship</span>
-            </div>
-            <div class="pcard-body">
-              <div>
-                <h3 class="pcard-title">PeoplePulse HRMS</h3>
-                <p class="pcard-tagline">HR Made Human</p>
-              </div>
-              <div class="pcard-chips">
-                <span class="pchip">Figma</span>
-                <span class="pchip">Wireframing</span>
-                <span class="pchip">Prototyping</span>
-                <span class="pchip chip-yellow">Enterprise UX</span>
-                <span class="pchip chip-yellow">Dashboard Design</span>
-              </div>
-              <p class="pcard-desc">Designed a full responsive HR management system — auth flows,
-                employee portal, attendance tracking, and leave management, delivered during an internship at Infotact
-                Solutions.</p>
-              <div class="pcard-role">
-                <div class="pcard-role-label">My Role</div>
-                <p>UI/UX Designer (Internship) — full design ownership from user stories to Figma prototypes across all
-                  core HR modules.</p>
-              </div>
-              <div class="pcard-ps">
-                <div class="ps-box ps-problem">
-                  <div class="ps-box-label">⚠ Problem</div>
-                  <p>Legacy HR tools are cluttered with poor workflows, causing employee frustration and manager
-                    inefficiency.</p>
-                </div>
-                <div class="ps-box ps-solution">
-                  <div class="ps-box-label">✦ Solution</div>
-                  <p>Clean, role-based dashboard with one-click approvals, self-service portal, and real-time analytics.
-                  </p>
-                </div>
-              </div>
-              <div class="pcard-process">
-                <span class="proc-step">Discovery</span><span class="proc-dot"></span>
-                <span class="proc-step">IA</span><span class="proc-dot"></span>
-                <span class="proc-step">Wireframe</span><span class="proc-dot"></span>
-                <span class="proc-step">UI Design</span><span class="proc-dot"></span>
-                <span class="proc-step">Handoff</span>
-              </div>
-              <div class="pcard-foot">
-                <a href="https://www.figma.com/proto/1t9yl5vwHBGHOciPBaqNC6/PeoplePulse-HRMS?node-id=181-342&t=l7ZBai08M7IyKYtv-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" target="_blank"
-                  rel="noopener" class="btn btn-primary btn-sm">
-                  <i class="fa-brands fa-figma"></i> View on Figma
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- ── Project 3 — NexusHome ── Image LEFT · Details RIGHT -->
-          <article class="pcard" data-aos>
-            <div class="pcard-img" style="background-image:url('assets/nexushome.png');">
-              <span class="pcard-badge badge-purple">Internship</span>
-            </div>
-            <div class="pcard-body">
-              <div>
-                <h3 class="pcard-title">NexusHome</h3>
-                <p class="pcard-tagline">Smart Home, Dark Mode First</p>
-              </div>
-              <div class="pcard-chips">
-                <span class="pchip chip-purple">Figma</span>
-                <span class="pchip chip-purple">Mobile UI</span>
-                <span class="pchip chip-purple">IoT Design</span>
-                <span class="pchip chip-purple">Dark Theme</span>
-                <span class="pchip chip-purple">Auto Layout</span>
-              </div>
-              <p class="pcard-desc">Designed a premium smart home IoT control app with intuitive device management,
-                automation routines, scene scheduling — all in a stunning dark-mode interface with glassmorphism cards.
-                <br><strong>(Note: Use email login to access the live dashboard)</strong>
+              <h3 class="tl-title">B.E. in Electronics &amp; Communication Engineering</h3>
+              <h4 class="tl-company"><i class="fa-solid fa-school"></i> Kalasalingam Academy of Research and Education</h4>
+              <p class="tl-body">
+                CGPA: 7.25/10 · Graduating 2026. Built strong analytical, problem-solving, and engineering foundations while specializing heavily in UI/UX architecture, front-end technologies, and AI workflows.
               </p>
-              <div class="pcard-role">
-                <div class="pcard-role-label">My Role</div>
-                <p>Product UI Designer (Internship) — visual system, component library, interactive prototype, and
-                  developer handoff.</p>
+              <div class="tl-skills-tags">
+                <span>ECE</span>
+                <span>Embedded Systems</span>
+                <span>UI/UX Architecture</span>
+                <span>Front-End Dev</span>
               </div>
-              <div class="pcard-ps">
-                <div class="ps-box ps-problem">
-                  <div class="ps-box-label">⚠ Problem</div>
-                  <p>Smart home apps feel cluttered and technical, overwhelming non-expert users at first launch.</p>
-                </div>
-                <div class="ps-box ps-solution">
-                  <div class="ps-box-label">✦ Solution</div>
-                  <p>Contextual room cards, one-tap scene control, and a progressive onboarding that hides complexity.
-                  </p>
-                </div>
-              </div>
-              <div class="pcard-process">
-                <span class="proc-step">Moodboard</span><span class="proc-dot"></span>
-                <span class="proc-step">Components</span><span class="proc-dot"></span>
-                <span class="proc-step">Screens</span><span class="proc-dot"></span>
-                <span class="proc-step">Prototype</span><span class="proc-dot"></span>
-                <span class="proc-step">Launch</span>
-              </div>
-              <div class="pcard-foot">
-                <a href="https://nexus-home-ui-a.vercel.app/" target="_blank" rel="noopener"
-                  class="btn btn-primary btn-sm">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live
-                </a>
-                <a href="https://www.figma.com/proto/TSQ4LdLya244WE1ItqVJCt/NexusHome?node-id=305-1092&p=f&t=RH6P7it20tvtwIYg-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=305%3A1075&show-proto-sidebar=1"
-                  target="_blank" rel="noopener" class="btn btn-outline btn-sm">
-                  <i class="fa-brands fa-figma"></i> View on Figma
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- ── Project 4 — Smart Agri Hub ── Details LEFT · Image RIGHT -->
-          <article class="pcard reverse" data-aos>
-            <div class="pcard-img" style="background-image:url('assets/agri-hub.png');">
-              <span class="pcard-badge badge-green">Mobile UI</span>
-            </div>
-            <div class="pcard-body">
-              <div>
-                <h3 class="pcard-title">Smart Agri Hub</h3>
-                <p class="pcard-tagline">Your Farming Companion</p>
-              </div>
-              <div class="pcard-chips">
-                <span class="pchip chip-green">Figma</span>
-                <span class="pchip chip-green">User Research</span>
-                <span class="pchip chip-green">Prototyping</span>
-                <span class="pchip chip-green">AgriTech</span>
-                <span class="pchip chip-green">Data Viz</span>
-              </div>
-              <p class="pcard-desc">End-to-end mobile app UI for a farmer support platform — real-time crop health,
-                weather alerts, market pricing, and expert chat — designed with accessibility for rural users.</p>
-              <div class="pcard-role">
-                <div class="pcard-role-label">My Role</div>
-                <p>UI/UX Designer — user research with farmers, persona definition, journey mapping, wireframes through
-                  to high-fi Figma screens.</p>
-              </div>
-              <div class="pcard-ps">
-                <div class="ps-box ps-problem">
-                  <div class="ps-box-label">⚠ Problem</div>
-                  <p>Farmers lack timely access to crop advice, market prices, and weather — often relying on unreliable
-                    sources.</p>
-                </div>
-                <div class="ps-box ps-solution">
-                  <div class="ps-box-label">✦ Solution</div>
-                  <p>Unified app with live market prices, AI crop diagnosis, nearby expert chat, and region-specific
-                    weather, designed for low-literacy users.</p>
-                </div>
-              </div>
-              <div class="pcard-process">
-                <span class="proc-step">Field Research</span><span class="proc-dot"></span>
-                <span class="proc-step">Personas</span><span class="proc-dot"></span>
-                <span class="proc-step">IA</span><span class="proc-dot"></span>
-                <span class="proc-step">Wireframes</span><span class="proc-dot"></span>
-                <span class="proc-step">Visual Design</span>
-              </div>
-              <div class="pcard-foot">
-                <a href="https://www.figma.com/proto/SFUvgEF0gZQZfWqviDpEAz/smart-agri-hub?node-id=1-2&p=f&t=wrppLoUHTUE9TsvA-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2"
-                  target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-                  <i class="fa-brands fa-figma"></i> View on Figma
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- ── Project 5 — Smartwatch Bus Booking ── Image LEFT · Details RIGHT -->
-          <article class="pcard" data-aos>
-            <div class="pcard-img" style="background-image:url('assets/smartwatch.png');">
-              <span class="pcard-badge badge-purple">Wearable UI</span>
-            </div>
-            <div class="pcard-body">
-              <div>
-                <h3 class="pcard-title">Smartwatch Bus Booking</h3>
-                <p class="pcard-tagline">Glanceable. Thumb-Friendly. Fast.</p>
-              </div>
-              <div class="pcard-chips">
-                <span class="pchip chip-purple">Figma</span>
-                <span class="pchip chip-purple">Wear OS</span>
-                <span class="pchip chip-purple">Auto Layout</span>
-                <span class="pchip chip-purple">Smart Animate</span>
-                <span class="pchip chip-purple">Micro-interactions</span>
-              </div>
-              <p class="pcard-desc">Glanceable, thumb-friendly wearable UI for a bus booking system on Wear OS —
-                real-time departures, one-tap booking, and QR confirmation, all within tight circular screen
-                constraints.</p>
-              <div class="pcard-role">
-                <div class="pcard-role-label">My Role</div>
-                <p>Wearable UI Designer — Wear OS guidelines, circular component design, animated transitions, and
-                  usability testing on watch emulators.</p>
-              </div>
-              <div class="pcard-ps">
-                <div class="ps-box ps-problem">
-                  <div class="ps-box-label">⚠ Problem</div>
-                  <p>Booking a bus on a phone while commuting is slow — unlocking, navigating, and typing on a small
-                    screen while standing.</p>
-                </div>
-                <div class="ps-box ps-solution">
-                  <div class="ps-box-label">✦ Solution</div>
-                  <p>Wrist-first UX: nearby stops auto-detected, departure in one swipe, QR ticket on wrist — no phone
-                    needed.</p>
-                </div>
-              </div>
-              <div class="pcard-process">
-                <span class="proc-step">Constraints Research</span><span class="proc-dot"></span>
-                <span class="proc-step">Flow Map</span><span class="proc-dot"></span>
-                <span class="proc-step">Components</span><span class="proc-dot"></span>
-                <span class="proc-step">Prototype</span>
-              </div>
-              <div class="pcard-foot">
-                <a href="https://www.figma.com/design/enGsbnl8r9GbRpZVPMkGqC/Bus-booking-intf?node-id=5-12&p=f&t=2xuiaGbarHGpexSP-0"
-                  target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-                  <i class="fa-brands fa-figma"></i> View on Figma
-                </a>
-              </div>
-            </div>
-          </article>
-
-
-          <!-- ── Project 6 — Img2DOCX ── Details RIGHT · Image LEFT -->
-          <article class="pcard reverse" data-aos>
-            <div class="pcard-img" style="background-image:url('assets/img2docx.png'); background-position: center center; background-size: cover;">
-              <span class="pcard-badge badge-ai">Dev Tool · 100% Offline</span>
-            </div>
-            <div class="pcard-body">
-              <div>
-                <h3 class="pcard-title">Img2DOCX</h3>
-                <p class="pcard-tagline">Your images have text. Let's get it out — free, fast, and private.</p>
-              </div>
-              <div class="pcard-chips">
-                <span class="pchip master">Tesseract.js</span>
-                <span class="pchip">React 19</span>
-                <span class="pchip">Vite 8</span>
-                <span class="pchip">Canvas API</span>
-                <span class="pchip">docx.js</span>
-                <span class="pchip">Framer Motion</span>
-              </div>
-              <p class="pcard-desc">Upload any image — a screenshot, a scanned page, a whiteboard photo — and get a properly formatted, editable Microsoft Word document in seconds. Everything runs in your browser. Nothing is sent to any server.</p>
-              <div class="pcard-role">
-                <div class="pcard-role-label">My Role</div>
-                <p>Solo Developer — built the image pre-processing pipeline, multi-variant OCR engine, text-to-document structuring system, and the full UI from scratch.</p>
-              </div>
-              <div class="pcard-ps">
-                <div class="ps-box ps-problem">
-                  <div class="ps-box-label">⚠ Problem</div>
-                  <p>You can't copy text from an image — not from scanned docs, screenshots, or infographics. Every online OCR tool you try asks you to upload your file to their server. That's a privacy risk, especially for sensitive documents.</p>
-                </div>
-                <div class="ps-box ps-solution">
-                  <div class="ps-box-label">✦ Solution</div>
-                  <p>Img2DOCX runs the entire OCR process inside your browser — no upload, no account, no internet needed. It tries 3 different image processing methods and picks whichever gives the best text, then exports a clean, formatted Word file instantly.</p>
-                </div>
-              </div>
-              <div class="pcard-process">
-                <span class="proc-step">Image Pre-processing</span><span class="proc-dot"></span>
-                <span class="proc-step">3-Variant OCR</span><span class="proc-dot"></span>
-                <span class="proc-step">Text Structuring</span><span class="proc-dot"></span>
-                <span class="proc-step">DOCX Generation</span><span class="proc-dot"></span>
-                <span class="proc-step">Download</span>
-              </div>
-              <div class="pcard-foot">
-                <a href="img2docx.html" class="btn btn-primary btn-sm">
-                  <i class="fa-solid fa-book-open"></i> View Project
-                </a>
-                <a href="https://img-to-word-do-cx.vercel.app/" target="_blank" rel="noopener"
-                  class="btn btn-outline btn-sm">
-                  <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live
-                </a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── 7. CERTIFICATIONS ─────────────────────────────────── -->
-    <section class="certs section" id="certs">
-      <div class="container">
-        <div class="section-label" data-aos>Recognition</div>
-        <h2 class="section-heading centered" data-aos><span class="accent-text">Certifications</span></h2>
-        <div class="certs-grid">
-
-          <div class="cert-card" data-aos>
-            <div class="cert-icon"><i class="fa-solid fa-certificate"></i></div>
-            <div class="cert-body">
-              <h3 class="cert-title">UI/UX Design</h3>
-              <p class="cert-org">Great Learning</p>
-              <p class="cert-date"><i class="fa-regular fa-calendar"></i> July 2024</p>
             </div>
           </div>
 
-          <div class="cert-card" data-aos>
-            <div class="cert-icon"><i class="fa-solid fa-award"></i></div>
-            <div class="cert-body">
-              <h3 class="cert-title">Soft Skills Certification</h3>
-              <p class="cert-org">Professional Development</p>
-              <p class="cert-date"><i class="fa-regular fa-calendar"></i> 2023</p>
+          <!-- Education Item 2: Minor Degree in UAV -->
+          <div class="timeline-card-item" data-aos>
+            <div class="tl-icon-badge edu">
+              <i class="fa-solid fa-plane-up"></i>
+            </div>
+            <div class="tl-content-card">
+              <div class="tl-header-row">
+                <span class="tl-badge edu-badge">Minor Degree</span>
+                <span class="tl-date-pill">2023 – 2025</span>
+              </div>
+              <h3 class="tl-title">Minor Degree in UAV (Unmanned Aerial Vehicles)</h3>
+              <h4 class="tl-company"><i class="fa-solid fa-school"></i> Kalasalingam Academy of Research and Education</h4>
+              <p class="tl-body">
+                Completed a specialized aeronautical engineering track covering UAV design principles, autonomous flight dynamics, and embedded avionics, strengthening a cross-disciplinary engineering perspective.
+              </p>
+              <div class="tl-skills-tags">
+                <span>UAV Systems</span>
+                <span>Aeronautical Systems</span>
+                <span>Flight Dynamics</span>
+                <span>Embedded Avionics</span>
+                <span>Sensor Integration</span>
+              </div>
             </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
-    <!-- ── 7. CONTACT ────────────────────────────────────────── -->
-    <section class="contact section" id="contact">
+    <!-- ── 8. CERTIFICATIONS SECTION ────────────────────────────── -->
+    <section class="certs-section" id="certs">
       <div class="container">
-        <div class="section-label" data-aos>Get In Touch</div>
-        <h2 class="section-heading centered" data-aos>Let's <span class="accent-text">Connect</span></h2>
-        <p class="contact-sub" data-aos>Open to Jr. UI/UX Designer roles and internships in Hyderabad, Bengaluru, and
-          Chennai.</p>
+        
+        <div class="section-center-head" data-aos>
+          <div class="section-tag">— Recognition</div>
+          <h2 class="section-title">Verified <span class="highlight-gold">Certifications</span></h2>
+        </div>
 
-        <div class="contact-grid" data-aos>
-          <div class="contact-links">
-            <a href="mailto:siddhardhagudiwada133@gmail.com" target="_blank" rel="noopener" class="contact-item">
-              <div class="ci-icon"><i class="fa-solid fa-envelope"></i></div>
-              <div class="ci-content">
-                <span class="ci-label">Email</span>
-                <span class="ci-value">siddhardhagudiwada133@gmail.com</span>
-              </div>
-              <i class="fa-solid fa-arrow-up-right-from-square ci-arrow"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/siddhartha-gudiwada-9b3584254" target="_blank" class="contact-item">
-              <div class="ci-icon linkedin"><i class="fa-brands fa-linkedin-in"></i></div>
-              <div class="ci-content">
-                <span class="ci-label">LinkedIn</span>
-                <span class="ci-value">siddhartha-gudiwada-9b3584254</span>
-              </div>
-              <i class="fa-solid fa-arrow-up-right-from-square ci-arrow"></i>
-            </a>
-            <a href="https://github.com/Siddhardha-14" target="_blank" class="contact-item">
-              <div class="ci-icon github"><i class="fa-brands fa-github"></i></div>
-              <div class="ci-content">
-                <span class="ci-label">GitHub</span>
-                <span class="ci-value">Siddhardha-14</span>
-              </div>
-              <i class="fa-solid fa-arrow-up-right-from-square ci-arrow"></i>
-            </a>
-          </div>
-
-          <div class="contact-cta-box">
-            <p class="cta-box-text">Ready to bring your product vision to life? Let's talk.</p>
-            <div class="cta-box-buttons">
-              <a href="mailto:siddhardhagudiwada133@gmail.com?subject=Hey%20Siddhartha%20%E2%80%94%20Let%27s%20Connect&body=Hi%20Siddhartha%2C%0A%0A" target="_blank" rel="noopener" class="btn btn-primary">
-                <i class="fa-solid fa-paper-plane"></i> Send Message
-              </a>
-              <a href="resume.html" target="_blank" class="btn btn-outline">
-                <i class="fa-solid fa-download"></i> View Resume
-              </a>
+        <div class="certs-grid-row">
+          
+          <div class="cert-card-box" data-aos>
+            <div class="cert-icon-wrap">
+              <i class="fa-solid fa-certificate"></i>
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-heading">UI/UX Design Specialization</h3>
+              <p class="cert-issuer">Great Learning</p>
+              <span class="cert-date-text"><i class="fa-regular fa-calendar"></i> July 2024</span>
             </div>
           </div>
+
+          <div class="cert-card-box" data-aos>
+            <div class="cert-icon-wrap">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-heading">Professional Soft Skills &amp; Communication</h3>
+              <p class="cert-issuer">Professional Development</p>
+              <span class="cert-date-text"><i class="fa-regular fa-calendar"></i> 2023</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── 9. CONTACT SECTION (Form + Elsewhere) ──────────────── -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-big-card" data-aos>
+          
+          <!-- Email Header Row -->
+          <div class="contact-email-header">
+            <a href="mailto:siddhardhagudiwada133@gmail.com" class="contact-email-display" id="emailContactCard">siddhardhagudiwada133@gmail.com</a>
+            <button class="btn-copy-address" id="copyEmailBtn">
+              <span id="copyEmailText">Copy Address</span>
+            </button>
+          </div>
+
+          <div class="contact-email-divider"></div>
+
+          <!-- Two-Column: Form + Elsewhere -->
+          <div class="contact-body-grid">
+
+            <!-- Left: Contact Form -->
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xpwzkjqz" method="POST">
+              <div class="form-row-2col">
+                <div class="form-group">
+                  <label class="form-label" for="contactName">Name</label>
+                  <input type="text" id="contactName" name="name" class="form-input" placeholder="Your name" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contactEmail">Email</label>
+                  <input type="email" id="contactEmail" name="email" class="form-input" placeholder="you@company.com" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="contactMessage">Message</label>
+                <textarea id="contactMessage" name="message" class="form-input form-textarea" placeholder="What are we building?" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn-send-form">
+                <span>Send message</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </button>
+            </form>
+
+            <!-- Right: Elsewhere Sidebar -->
+            <div class="contact-elsewhere">
+              <span class="elsewhere-label">Elsewhere</span>
+
+              <a href="https://github.com/Siddhardha-14" target="_blank" rel="noopener" class="elsewhere-link">
+                <span>GitHub</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/siddhartha-gudiwada-9b3584254" target="_blank" rel="noopener" class="elsewhere-link">
+                <span>LinkedIn</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+              <a href="resume.html" target="_blank" class="elsewhere-link elsewhere-resume">
+                <span>Resume (PDF)</span>
+                <i class="fa-solid fa-arrow-down"></i>
+              </a>
+
+              <p class="elsewhere-location">Hyderabad, IST · usually replies before your next coffee.</p>
+            </div>
+
+          </div>
+
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ── FOOTER ───────────────────────────────────────────────── -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <span>© 2026 Siddhartha Gudiwada</span>
-      <span class="footer-dot">·</span>
-      <span>Designed with <i class="fa-brands fa-figma accent-text"></i> Figma</span>
-      <span class="footer-dot">·</span>
-      <span>Built with <i class="fa-solid fa-heart accent-text"></i></span>
+  <!-- ── FOOTER ────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Siddhartha Gudiwada</span>
+        <span class="footer-copy">© 2026 · All Rights Reserved</span>
+      </div>
+      
     </div>
   </footer>
 
-  <!-- CASE STUDY MODAL -->
-  <div class="cs-modal" id="case-study-modal">
-    <div class="cs-backdrop"></div>
-    <div class="cs-panel">
-      <button class="cs-close" aria-label="Close">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <iframe id="case-study-frame" class="cs-frame" src="" title="Vehicle Bay Case Study" allowfullscreen></iframe>
-    </div>
-  </div>
+  <!-- ── TOAST NOTIFICATION ────────────────────────────────────── -->
+  <div class="toast-popup" id="toastPopup">Email copied to clipboard!</div>
 
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 

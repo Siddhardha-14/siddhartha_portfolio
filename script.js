@@ -4,40 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── 1. CUSTOM CURSOR WITH TRAILING FOLLOWER ───────────────────
-  const cursor = document.getElementById('cursor');
-  const follower = document.getElementById('cursorFollower');
-
-  if (cursor && follower && window.matchMedia('(pointer: fine)').matches) {
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let cursorX = mouseX;
-    let cursorY = mouseY;
-    let followerX = mouseX;
-    let followerY = mouseY;
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    }, { passive: true });
-
-    function renderCursor() {
-      // Main dot
-      cursorX += (mouseX - cursorX) * 0.35;
-      cursorY += (mouseY - cursorY) * 0.35;
-      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
-
-      // Smooth trailing ring
-      followerX += (mouseX - followerX) * 0.15;
-      followerY += (mouseY - followerY) * 0.15;
-      follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
-
-      requestAnimationFrame(renderCursor);
-    }
-    requestAnimationFrame(renderCursor);
-  }
-
-  // ── 2. NAVBAR SCROLL & ACCURATE ACTIVE LINK HIGHLIGHT (SCROLLSPY) ──
+  // ── 1. NAVBAR SCROLL & ACCURATE ACTIVE LINK HIGHLIGHT (SCROLLSPY) ──
   const navbar = document.getElementById('navbar');
   const navLinks = document.querySelectorAll('.nav-link');
   const drawerNavLinks = document.querySelectorAll('.drawer-link');
@@ -400,25 +367,21 @@ document.addEventListener('DOMContentLoaded', () => {
         name: name,
         email: email,
         subject: subject || 'Portfolio Opportunity / Inquiry',
-        message: message,
-        _subject: `New Portfolio Message from ${name} [${subject || 'Opportunity'}]`,
-        _template: 'table',
-        _captcha: 'false'
+        message: message
       };
 
       try {
-        const response = await fetch(`https://formsubmit.co/ajax/${targetEmail}`, {
+        const response = await fetch('/api/send', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify(payload)
         });
 
         const data = await response.json();
 
-        if (response.ok && (data.success === 'true' || data.success === true || response.status === 200)) {
+        if (response.ok && data.success) {
           // Success State
           if (submitContactBtn) {
             submitContactBtn.classList.remove('loading');

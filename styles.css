@@ -144,44 +144,7 @@ i[class*="fa-"],
   flex-shrink: 0;
 }
 
-/* ── 2. CUSTOM CURSOR ─────────────────────────────────────────── */
-.custom-cursor {
-  width: 8px;
-  height: 8px;
-  background: var(--c-gold);
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.05s linear, opacity 0.2s;
-}
-
-.custom-cursor-follower {
-  width: 34px;
-  height: 34px;
-  border: 1.5px solid rgba(229, 164, 59, 0.6);
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.25s var(--ease-smooth), height 0.25s var(--ease-smooth), border-color 0.25s, background-color 0.25s;
-}
-
-body:has(a:hover) .custom-cursor-follower,
-body:has(button:hover) .custom-cursor-follower {
-  width: 52px;
-  height: 52px;
-  border-color: var(--c-gold);
-  background-color: rgba(229, 164, 59, 0.08);
-}
-
-/* ── 3. LAYOUT UTILITIES ──────────────────────────────────────── */
+/* ── 2. LAYOUT UTILITIES ──────────────────────────────────────── */
 .container {
   max-width: 1220px;
   margin: 0 auto;
@@ -3268,13 +3231,8 @@ body:has(button:hover) .custom-cursor-follower {
   }
 }
 
-/* ─ Touch & Mobile Devices (Cursor & Tap Targets) ─ */
+/* ─ Touch & Mobile Devices (Tap Targets) ─ */
 @media (hover: none) and (pointer: coarse) {
-  /* Completely disable custom cursor on touch screens */
-  .custom-cursor,
-  .custom-cursor-follower {
-    display: none !important;
-  }
   /* Enlarge tap targets for fingers */
   .nav-link {
     padding: 10px 6px;
@@ -3294,8 +3252,6 @@ body:has(button:hover) .custom-cursor-follower {
 @media print {
   .header-nav-wrap,
   .mobile-drawer,
-  .custom-cursor,
-  .custom-cursor-follower,
   .marquee-ticker-section,
   .rotating-badge-wrap,
   .float-badge,

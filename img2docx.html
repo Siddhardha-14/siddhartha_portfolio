@@ -444,9 +444,6 @@
 </head>
 <body>
 
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-trail" id="cursorTrail"></div>
-
   <!-- ── NAV ──────────────────────────────────────────── -->
   <nav id="navbar" class="scrolled">
     <div class="nav-inner">
@@ -758,17 +755,6 @@
   </footer>
 
   <script>
-    // Cursor
-    const cursor = document.getElementById('cursor');
-    const trail = document.getElementById('cursorTrail');
-    let tx = 0, ty = 0, cx = 0, cy = 0;
-    document.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; cursor.style.transform = `translate(${tx}px,${ty}px) translate(-50%,-50%)`; });
-    (function animTrail() {
-      cx += (tx - cx) * 0.12; cy += (ty - cy) * 0.12;
-      trail.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
-      requestAnimationFrame(animTrail);
-    })();
-
     // Navbar scroll
     const nav = document.getElementById('navbar');
     window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 20), { passive: true });

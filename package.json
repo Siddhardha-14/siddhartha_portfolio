@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "build": "npm --prefix react-portfolio install && npm --prefix react-portfolio run build && node sync-dist.js",
     "dev": "npm --prefix react-portfolio run dev",
-    "build": "npm --prefix react-portfolio run build",
     "lint": "npm --prefix react-portfolio run lint",
     "preview": "npm --prefix react-portfolio run preview",
     "server": "node server.js",

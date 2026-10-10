@@ -30,6 +30,7 @@
 11. Ran `npm run lint` and `npm run build` — both passing with 0 errors and 0 warnings.
 12. Rolled back the SVG path marquee experiment per user direction: restored clean editorial layouts for both `Services.jsx` and `Skills.jsx`, removed unused components and styles, uninstalled `motion`, and verified 0 linter/build errors.
 13. Committed (`commit 98b30d9`) and pushed clean production-ready codebase to GitHub `main` branch (`https://github.com/Siddhardha-14/siddhartha_portfolio.git`) with automated Vercel deployment pipeline configured.
+14. Synchronized React build to root index.html, configured vercel.json with framework: null and outputDirectory: ., ready for Vercel production promotion.
 
 ---
 

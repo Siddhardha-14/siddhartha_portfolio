@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "npm --prefix react-portfolio install && npm --prefix react-portfolio run build && node sync-dist.js",
-    "dev": "npm --prefix react-portfolio run dev",
-    "lint": "npm --prefix react-portfolio run lint",
-    "preview": "npm --prefix react-portfolio run preview",
-    "server": "node server.js",
-    "start": "node server.js"
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "echo 'Static site ready'",
+    "lint": "node -c server.js api/send.js script.js"
   },
   "devDependencies": {
     "serve": "^14.2.4"

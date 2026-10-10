@@ -1413,6 +1413,62 @@ i[class*="fa-"],
 
 .skill-pill.figma-ai i { color: var(--c-gold); }
 
+/* Tool Brand SVG Logos */
+.tool-brand-logo {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: -2px;
+  margin-right: 5px;
+  flex-shrink: 0;
+  transition: transform 0.25s var(--ease-spring);
+}
+
+.skill-pill:hover .tool-brand-logo {
+  transform: scale(1.18);
+}
+
+/* Specific brand hover accents */
+.skill-pill.brand-figma:hover {
+  border-color: rgba(26, 188, 254, 0.4);
+}
+
+.skill-pill.brand-framer:hover {
+  border-color: rgba(0, 85, 255, 0.4);
+}
+
+.skill-pill.brand-illustrator:hover {
+  border-color: rgba(255, 154, 0, 0.4);
+}
+
+.skill-pill.brand-lovable:hover {
+  border-color: rgba(255, 51, 102, 0.4);
+}
+
+.skill-pill.brand-vscode:hover {
+  border-color: rgba(0, 122, 204, 0.4);
+}
+
+.skill-pill.brand-slack:hover {
+  border-color: rgba(224, 30, 90, 0.4);
+}
+
+.skill-pill.brand-jira:hover {
+  border-color: rgba(0, 82, 204, 0.4);
+}
+
+.skill-pill.brand-powerbi:hover {
+  border-color: rgba(242, 200, 17, 0.5);
+}
+
+.skill-pill.brand-make:hover {
+  border-color: rgba(107, 56, 251, 0.4);
+}
+
+.skill-pill.brand-n8n:hover {
+  border-color: rgba(234, 75, 113, 0.4);
+}
+
 /* ── (Process section removed — process shown within case studies) ── */
 .process-section {
   padding: 100px 0;
@@ -3248,6 +3304,309 @@ i[class*="fa-"],
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   ── DESIGN THINKING PROCESS (DOUBLE DIAMOND) ──────────────────
+   ══════════════════════════════════════════════════════════════ */
+.process-section {
+  padding: 100px 0;
+  position: relative;
+  background: var(--c-bg);
+}
+
+.process-pill-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6366f1;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  margin-bottom: 16px;
+}
+
+.process-stepper-wrap {
+  position: relative;
+  max-width: 820px;
+  margin: 0 auto 48px;
+  padding: 0 16px;
+}
+
+.stepper-track-line {
+  position: absolute;
+  top: 26px;
+  left: 60px;
+  right: 60px;
+  height: 2px;
+  background: rgba(22, 48, 36, 0.08);
+  z-index: 1;
+}
+
+.stepper-progress-fill {
+  height: 100%;
+  transition: width 0.4s var(--ease-smooth), background-color 0.4s var(--ease-smooth);
+}
+
+.stepper-nodes-row {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+
+.stepper-node-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.25s var(--ease-smooth);
+}
+
+.stepper-node-btn:hover {
+  transform: translateY(-2px);
+}
+
+.stepper-node-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.35s var(--ease-spring);
+}
+
+.stepper-node-box .node-num {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.stepper-node-box .node-icon-check {
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.stepper-node-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.node-type-icon {
+  font-size: 0.92rem;
+  transition: color 0.2s ease;
+}
+
+.node-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+/* Card Display */
+.process-card-display {
+  max-width: 860px;
+  margin: 0 auto;
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border);
+  border-radius: 28px;
+  padding: 44px 48px;
+  box-shadow: 0 16px 44px -8px rgba(22, 48, 36, 0.08);
+  transition: border-top-color 0.35s ease, box-shadow 0.3s ease;
+}
+
+.process-card-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.process-icon-square {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  border: 1.5px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.process-nav-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 1px solid var(--c-border);
+}
+
+.process-arrow-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--c-border);
+  background: var(--c-bg-subtle);
+  color: var(--c-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.process-arrow-btn:hover {
+  background: var(--c-gold);
+  color: #ffffff;
+  border-color: var(--c-gold);
+}
+
+.process-dots-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.process-dot-btn {
+  height: 8px;
+  width: 8px;
+  border-radius: 9999px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.35s var(--ease-spring);
+}
+
+.process-dot-btn.active {
+  width: 28px;
+}
+
+@media (max-width: 768px) {
+  .process-section {
+    padding: 70px 0;
+  }
+  .process-stepper-wrap {
+    margin-bottom: 32px;
+  }
+  .stepper-track-line {
+    display: none;
+  }
+  .stepper-node-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+  .node-label {
+    font-size: 0.65rem;
+  }
+  .process-card-display {
+    padding: 28px 20px;
+    border-radius: 20px;
+  }
+  .process-card-bottom-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+
+/* ── Process Card Typography & Sub-Layouts ── */
+.process-header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.process-phase-tag {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.process-phase-title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--c-text-primary);
+  margin: 0;
+}
+
+.process-phase-desc {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--c-text-secondary);
+  margin: 0 0 28px 0;
+}
+
+.process-card-bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--c-border);
+  margin-bottom: 24px;
+}
+
+.process-subhead-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-text-muted);
+  margin: 0 0 12px 0;
+}
+
+.process-tools-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.process-tool-chip {
+  background: var(--c-bg-subtle);
+  color: var(--c-text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--c-border);
+}
+
+.process-outcome-box {
+  background: var(--c-bg-subtle);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+}
+
+.process-outcome-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--c-text-primary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.outcome-sparkle {
+  margin-right: 6px;
+  font-weight: bold;
+}
+
 /* ─ Clean Print Stylesheet ─ */
 @media print {
   .header-nav-wrap,
@@ -3256,7 +3615,8 @@ i[class*="fa-"],
   .rotating-badge-wrap,
   .float-badge,
   .about-chip-pill,
-  .toast-popup {
+  .toast-popup,
+  .process-nav-controls {
     display: none !important;
   }
   body {
@@ -3264,10 +3624,12 @@ i[class*="fa-"],
     background: #fff;
   }
   .about-card-container,
-  .contact-big-card {
+  .contact-big-card,
+  .process-card-display {
     background: #f8f8f8;
     color: #000;
     box-shadow: none;
   }
 }
+
 

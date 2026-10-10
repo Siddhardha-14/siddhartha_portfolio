@@ -4,7 +4,7 @@
 A high-converting, modern portfolio showcasing **Siddhartha Gudiwada** as a premier **Product & UI/UX Designer**. The site demonstrates mastery across user research, enterprise design systems (e.g., PeoplePulse HRMS at Infotact Solutions), AI-native application prototyping (Lovable, Cursor, v0, Stitch), and front-end engineering.
 
 ## 2. Core Architecture
-- **Frontend Core:** React 19 + Vite 8
+- **Frontend Core:** Semantic HTML5 + Vanilla CSS3 + Modern Vanilla JavaScript (ES6+)
 - **Styling Architecture:** Vanilla CSS variables, responsive typography, glassmorphism, tailored dark/gold luxury theme
 - **WebGL Shader Layer:** GLSL simplex noise aurora background running on HTML5 Canvas with fallback for reduced motion
 - **Backend / Communication:** Node.js HTTP server (`server.js`) with Resend Mail API (`/api/send`) for recruiter message routing

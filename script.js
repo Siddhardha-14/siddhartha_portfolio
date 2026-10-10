@@ -213,31 +213,210 @@ document.addEventListener('DOMContentLoaded', () => {
   if (aboutSection) statsObserver.observe(aboutSection);
 
   // ── 6. DOUBLE DIAMOND PROCESS STEPPER ─────────────────────────
-  const stepperSteps = document.querySelectorAll('.stepper-step');
-  const processCards = document.querySelectorAll('.process-card');
-  const stepperFill = document.getElementById('stepperFill');
+  const processPhases = [
+    {
+      id: 1,
+      phaseNumber: '01',
+      label: 'DISCOVER',
+      icon: 'fa-magnifying-glass',
+      accent: '#6366f1',
+      accentLight: 'rgba(99, 102, 241, 0.12)',
+      accentBorder: 'rgba(99, 102, 241, 0.3)',
+      tag: 'PHASE 01 · DISCOVER',
+      title: 'Research & Discovery',
+      description: 'I use a mixed-methods approach: qualitative interviews (5–8 users per round) combined with quantitative signals from analytics. Every assumption gets challenged before a single pixel is drawn.',
+      tools: ['User Interviews', 'Heuristic Audits', 'Competitive Analysis', 'Analytics Review'],
+      outcome: 'Validated problem statement backed by real user pain points and data.'
+    },
+    {
+      id: 2,
+      phaseNumber: '02',
+      label: 'DEFINE',
+      icon: 'fa-book-open',
+      accent: '#8b5cf6',
+      accentLight: 'rgba(139, 92, 246, 0.12)',
+      accentBorder: 'rgba(139, 92, 246, 0.3)',
+      tag: 'PHASE 02 · DEFINE',
+      title: 'Synthesise & Define',
+      description: 'I translate raw research into clear opportunity spaces using JTBD frameworks. The output is a one-page brief that aligns stakeholders, engineers, and business goals — no ambiguity allowed.',
+      tools: ['Affinity Mapping', 'Jobs-to-be-Done', 'Journey Maps', 'How Might We'],
+      outcome: 'A sharp, agreed-upon design brief with measurable success metrics.'
+    },
+    {
+      id: 3,
+      phaseNumber: '03',
+      label: 'DESIGN',
+      icon: 'fa-pen',
+      accent: '#f43f5e',
+      accentLight: 'rgba(244, 63, 94, 0.12)',
+      accentBorder: 'rgba(244, 63, 94, 0.3)',
+      tag: 'PHASE 03 · DESIGN',
+      title: 'Ideate & Prototype',
+      description: 'I prototype at the speed of thought — low-fi sketches in 30 min, hi-fi Figma in hours. Every component is built for a design system first, an isolated screen second.',
+      tools: ['Figma', 'Crazy 8s', 'Component Systems', 'WCAG Checks'],
+      outcome: 'High-fidelity, interactive prototype validated against real user flows.'
+    },
+    {
+      id: 4,
+      phaseNumber: '04',
+      label: 'DELIVER',
+      icon: 'fa-check',
+      accent: '#10b981',
+      accentLight: 'rgba(16, 185, 129, 0.12)',
+      accentBorder: 'rgba(16, 185, 129, 0.3)',
+      tag: 'PHASE 04 · DELIVER',
+      title: 'Test & Ship',
+      description: 'I run 3–5 moderated usability tests per sprint, document findings in Confluence, and sit in on sprint reviews. I write dev-ready specs with interaction notes, edge cases, and accessibility annotations.',
+      tools: ['Usability Testing', 'A/B Testing', 'Dev Handoff', 'Post-Launch Metrics'],
+      outcome: 'Shipped product with measurable uplift in CSAT, task completion, and retention.'
+    }
+  ];
 
-  if (stepperSteps.length > 0 && processCards.length > 0) {
-    stepperSteps.forEach((stepBtn, index) => {
-      stepBtn.addEventListener('click', () => {
-        // Update Step Buttons
-        stepperSteps.forEach((s, idx) => {
-          s.classList.toggle('active', idx === index);
-          s.classList.toggle('completed', idx < index);
-        });
+  let currentProcessIdx = 0;
+  const stepperNodeBtns = document.querySelectorAll('.stepper-node-btn');
+  const stepperProgressFill = document.getElementById('stepperProgressFill');
+  const processCardDisplay = document.getElementById('processCardDisplay');
+  const processIconSquare = document.getElementById('processIconSquare');
+  const processIcon = document.getElementById('processIcon');
+  const processPhaseTag = document.getElementById('processPhaseTag');
+  const processPhaseTitle = document.getElementById('processPhaseTitle');
+  const processPhaseDesc = document.getElementById('processPhaseDesc');
+  const processToolsChips = document.getElementById('processToolsChips');
+  const processOutcomeSparkle = document.getElementById('processOutcomeSparkle');
+  const processOutcomeText = document.getElementById('processOutcomeText');
+  const processDotBtns = document.querySelectorAll('.process-dot-btn');
+  const processPrevBtn = document.getElementById('processPrevBtn');
+  const processNextBtn = document.getElementById('processNextBtn');
 
-        // Update Cards
-        processCards.forEach((card, idx) => {
-          card.classList.toggle('active', idx === index);
-        });
+  function renderProcessPhase(index) {
+    if (index < 0 || index >= processPhases.length) return;
+    currentProcessIdx = index;
+    const phase = processPhases[index];
 
-        // Update Progress Line Fill
-        const percentage = (index / (stepperSteps.length - 1)) * 100;
-        if (stepperFill) {
-          stepperFill.style.width = `${percentage}%`;
+    // 1. Update Stepper Progress Line
+    if (stepperProgressFill) {
+      stepperProgressFill.style.width = `${(index / (processPhases.length - 1)) * 100}%`;
+      stepperProgressFill.style.background = phase.accent;
+    }
+
+    // 2. Update Stepper Nodes
+    stepperNodeBtns.forEach((btn, idx) => {
+      const p = processPhases[idx];
+      const box = btn.querySelector('.stepper-node-box');
+      const icon = btn.querySelector('.node-type-icon');
+      const label = btn.querySelector('.node-label');
+
+      btn.classList.remove('active', 'completed', 'upcoming');
+      btn.setAttribute('aria-pressed', idx === index ? 'true' : 'false');
+
+      if (idx === index) {
+        btn.classList.add('active');
+        if (box) {
+          box.style.background = phase.accent;
+          box.style.borderColor = phase.accent;
+          box.style.boxShadow = `0 10px 24px -4px ${phase.accent}66`;
+          box.innerHTML = `<span class="node-num" style="color:#ffffff;">${p.phaseNumber}</span>`;
         }
-      });
+        if (icon) icon.style.color = phase.accent;
+        if (label) {
+          label.style.color = phase.accent;
+          label.style.fontWeight = '800';
+        }
+      } else if (idx < index) {
+        btn.classList.add('completed');
+        if (box) {
+          box.style.background = phase.accent;
+          box.style.borderColor = phase.accent;
+          box.style.boxShadow = 'none';
+          box.innerHTML = `<i class="fa-solid fa-check node-icon-check"></i>`;
+        }
+        if (icon) icon.style.color = phase.accent;
+        if (label) {
+          label.style.color = 'var(--c-text-secondary)';
+          label.style.fontWeight = '600';
+        }
+      } else {
+        btn.classList.add('upcoming');
+        if (box) {
+          box.style.background = 'var(--c-bg-card)';
+          box.style.borderColor = 'var(--c-border)';
+          box.style.boxShadow = 'none';
+          box.innerHTML = `<span class="node-num" style="color:var(--c-text-muted);">${p.phaseNumber}</span>`;
+        }
+        if (icon) icon.style.color = 'var(--c-text-muted)';
+        if (label) {
+          label.style.color = 'var(--c-text-secondary)';
+          label.style.fontWeight = '600';
+        }
+      }
     });
+
+    // 3. Update Card Content
+    if (processCardDisplay) {
+      processCardDisplay.style.borderTop = `4px solid ${phase.accent}`;
+    }
+    if (processIconSquare) {
+      processIconSquare.style.background = phase.accentLight;
+      processIconSquare.style.borderColor = phase.accentBorder;
+      processIconSquare.style.color = phase.accent;
+    }
+    if (processIcon) {
+      processIcon.className = `fa-solid ${phase.icon}`;
+    }
+    if (processPhaseTag) {
+      processPhaseTag.textContent = phase.tag;
+      processPhaseTag.style.color = phase.accent;
+    }
+    if (processPhaseTitle) {
+      processPhaseTitle.textContent = phase.title;
+    }
+    if (processPhaseDesc) {
+      processPhaseDesc.textContent = phase.description;
+    }
+    if (processToolsChips) {
+      processToolsChips.innerHTML = phase.tools
+        .map(t => `<span class="process-tool-chip">${t}</span>`)
+        .join('');
+    }
+    if (processOutcomeSparkle) {
+      processOutcomeSparkle.style.color = phase.accent;
+    }
+    if (processOutcomeText) {
+      processOutcomeText.textContent = phase.outcome;
+    }
+
+    // 4. Update Dot Buttons
+    processDotBtns.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === index);
+      dot.style.background = idx === index ? phase.accent : 'rgba(22, 48, 36, 0.15)';
+    });
+  }
+
+  // Initialize phase 0 & bind events
+  if (stepperNodeBtns.length > 0) {
+    renderProcessPhase(0);
+
+    stepperNodeBtns.forEach((btn, idx) => {
+      btn.addEventListener('click', () => renderProcessPhase(idx));
+    });
+
+    processDotBtns.forEach((dot, idx) => {
+      dot.addEventListener('click', () => renderProcessPhase(idx));
+    });
+
+    if (processPrevBtn) {
+      processPrevBtn.addEventListener('click', () => {
+        const prev = currentProcessIdx > 0 ? currentProcessIdx - 1 : processPhases.length - 1;
+        renderProcessPhase(prev);
+      });
+    }
+
+    if (processNextBtn) {
+      processNextBtn.addEventListener('click', () => {
+        const next = currentProcessIdx < processPhases.length - 1 ? currentProcessIdx + 1 : 0;
+        renderProcessPhase(next);
+      });
+    }
   }
 
   // ── 7. PROJECT FILTER TABS ────────────────────────────────────

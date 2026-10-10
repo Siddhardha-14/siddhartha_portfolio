@@ -214,5 +214,10 @@ if __name__ == '__main__':
     target_pdf = os.path.join(assets_dir, 'Siddhartha_Gudiwada_Resume.pdf')
     root_pdf = os.path.join(base_dir, 'resume.pdf')
     
-    generate_resume(target_pdf)
-    generate_resume(root_pdf)
+    # Protected: User has provided their authentic official PDF.
+    # To regenerate template PDF, set OVERWRITE_OFFICIAL=1
+    if os.environ.get('OVERWRITE_OFFICIAL') == '1':
+        generate_resume(target_pdf)
+        generate_resume(root_pdf)
+    else:
+        print("Authentic official PDF preserved. Set OVERWRITE_OFFICIAL=1 to rebuild.")

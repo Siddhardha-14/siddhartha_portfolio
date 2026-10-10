@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/open-gsd/gsd-core/main/schemas/config.schema.json",
+  "version": "1.0.0",
+  "framework": "gsd",
+  "projectName": "siddhartha-portfolio",
+  "workflow": {
+    "phases": ["discuss", "plan", "execute", "verify", "ship"],
+    "specDirectory": ".planning",
+    "strictMode": true
+  },
+  "stack": {
+    "framework": "React 19",
+    "bundler": "Vite 8",
+    "styling": "Vanilla CSS Tokens",
+    "runtime": "Node.js (Resend API)",
+    "appDirectory": "react-portfolio"
+  },
+  "activeMilestone": "v1.0.0-react"
+}

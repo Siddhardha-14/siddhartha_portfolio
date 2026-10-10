@@ -11,3 +11,5 @@ vehicle-bay-case-study/node_modules/
 backup_v1/
 backup_vanilla/
 backup_*/
+dist/
+react-portfolio/dist/

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siddhartha Gudiwada — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 14mm 16mm 14mm 16mm;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    :root {
+      --text-main: #111827;
+      --text-muted: #374151;
+      --link-blue: #0284c7;
+      --border-dark: #111827;
+      --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      font-family: var(--font-family);
+      background-color: #f3f4f6;
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 24px 16px 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* ── TOP ACTION BAR ────────────────────────────────────── */
+    .action-header {
+      width: 100%;
+      max-width: 820px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .action-group {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+    .btn-back {
+      background: #ffffff;
+      color: #374151;
+      border-color: #d1d5db;
+    }
+    .btn-back:hover {
+      background: #f9fafb;
+      color: #111827;
+      border-color: #9ca3af;
+    }
+    .btn-download {
+      background: #0f172a;
+      color: #ffffff;
+    }
+    .btn-download:hover {
+      background: #1e293b;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .btn-print {
+      background: #0284c7;
+      color: #ffffff;
+    }
+    .btn-print:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+
+    /* ── RESUME PAPER CONTAINER ────────────────────────────── */
+    .resume-paper {
+      width: 100%;
+      max-width: 820px;
+      background: #ffffff;
+      padding: 40px 48px 44px;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+      box-sizing: border-box;
+    }
+
+    /* ── HEADER SECTION ────────────────────────────────────── */
+    .resume-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .resume-name {
+      font-size: 26px;
+      font-weight: 700;
+      color: #000000;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .resume-contacts {
+      font-size: 13.5px;
+      color: #262626;
+      margin-bottom: 5px;
+    }
+    .resume-links {
+      font-size: 13.5px;
+    }
+    .resume-links a {
+      color: #0284c7;
+      text-decoration: underline;
+      font-weight: 500;
+      margin: 0 3px;
+    }
+
+    /* ── SECTIONS ──────────────────────────────────────────── */
+    .section-block {
+      margin-top: 16px;
+    }
+    .section-heading {
+      font-size: 16px;
+      font-weight: 700;
+      color: #000000;
+      text-transform: capitalize;
+      margin-bottom: 4px;
+    }
+    .section-divider {
+      height: 1px;
+      background-color: #000000;
+      border: none;
+      margin-bottom: 10px;
+    }
+
+    /* ── CONTENT TYPOGRAPHY ────────────────────────────────── */
+    .section-p {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: #1f2937;
+      text-align: justify;
+    }
+
+    /* Education item */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+    }
+    .edu-degree {
+      font-size: 14px;
+      font-weight: 700;
+      color: #000000;
+    }
+    .edu-year {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #111827;
+      white-space: nowrap;
+    }
+    .edu-inst {
+      font-size: 13.5px;
+      color: #1f2937;
+      margin-bottom: 2px;
+    }
+    .edu-grade {
+      font-size: 13.5px;
+      color: #1f2937;
+    }
+
+    /* Experience / Projects title */
+    .item-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 5px;
+      margin-top: 8px;
+    }
+    .item-title:first-child {
+      margin-top: 0;
+    }
+
+    /* Bullet lists */
+    .bullet-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+    .bullet-list li {
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: #1f2937;
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 4px;
+      text-align: justify;
+    }
+    .bullet-list li:last-child {
+      margin-bottom: 0;
+    }
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 3px;
+      top: -0.5px;
+      font-size: 14px;
+      color: #000000;
+    }
+    .bullet-label {
+      font-weight: 700;
+      color: #000000;
+    }
+
+    /* Certifications row */
+    .cert-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 2px;
+    }
+    .cert-entry {
+      font-size: 13.5px;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cert-bullet {
+      font-size: 14px;
+      color: #000000;
+    }
+
+    /* ── PRINT & PDF EXPORT STYLES ─────────────────────────── */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .action-header {
+        display: none !important;
+      }
+      .resume-paper {
+        max-width: 100% !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .resume-links a {
+        color: #0284c7 !important;
+        text-decoration: underline !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 16px 8px 32px;
+      }
+      .resume-paper {
+        padding: 28px 20px;
+      }
+      .resume-name {
+        font-size: 22px;
+      }
+      .edu-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .cert-row {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Action Bar -->
+  <div class="action-header">
+    <a href="index.html" class="btn btn-back">
+      <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+    </a>
+    <div class="action-group">
+      <a href="assets/Siddhartha_Gudiwada_Resume.pdf" download="Siddhartha_Gudiwada_Resume.pdf" class="btn btn-download">
+        <i class="fa-solid fa-download"></i> Download PDF
+      </a>
+      <button onclick="window.print()" class="btn btn-print">
+        <i class="fa-solid fa-print"></i> Print
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Resume Document -->
+  <main class="resume-paper" id="resumeDocument">
+
+    <!-- Header -->
+    <header class="resume-header">
+      <h1 class="resume-name">Siddhartha Gudiwada</h1>
+      <p class="resume-contacts">siddhardhagudiwada133@gmail.com — +91 9392137214 — NTR, AP, India - 521227</p>
+      <p class="resume-links">
+        <a href="https://www.linkedin.com/in/siddhartha-gudiwada-9b3584254" target="_blank" rel="noopener">Linked in</a> - 
+        <a href="index.html" target="_blank">portfolio</a>
+      </p>
+    </header>
+
+    <!-- Objective -->
+    <section class="section-block">
+      <h2 class="section-heading">Objective</h2>
+      <div class="section-divider"></div>
+      <p class="section-p">
+        UI/UX Designer with experience in Figma, wireframing, prototyping, and responsive front-end UI design for both web and mobile. Proficient in making user flows, design systems, and interactive prototypes, and also developer handoffs. Have a good grasp of usability, some basics of accessibility, and user-centered design.
+      </p>
+    </section>
+
+    <!-- Education -->
+    <section class="section-block">
+      <h2 class="section-heading">Education</h2>
+      <div class="section-divider"></div>
+      <div class="edu-row">
+        <span class="edu-degree">Bachelor of Engineering in Electronics and Communication Engineering</span>
+        <span class="edu-year">2022 – 2026</span>
+      </div>
+      <div class="edu-inst">Kalasalingam Academy of Research and Education, Tamil Nadu</div>
+      <div class="edu-grade">CGPA: 7.25/10</div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="section-block">
+      <h2 class="section-heading">Technical Skills</h2>
+      <div class="section-divider"></div>
+      <ul class="bullet-list">
+        <li>
+          <span class="bullet-label">UI/UX &amp; Process:</span> UI Design, UX Design, Wireframing, Prototyping, User Flows, Usability Testing, Accessibility (WCAG basics), Design Handoff, User Research
+        </li>
+        <li>
+          <span class="bullet-label">Design Tools:</span> Figma, Framer, Auto Layout (Figma), Interactive Prototyping, Design Systems, Component Library.
+        </li>
+        <li>
+          <span class="bullet-label">AI-Assisted Development (Vibe Coding):</span> LLM’s, GitHub ,Antigravity, Cursor, AI-assisted debugging, rapid prototyping workflows.
+        </li>
+        <li>
+          <span class="bullet-label">Platforms:</span> Responsive Web Design, Web UI Design, Mobile App UI
+        </li>
+        <li>
+          <span class="bullet-label">Other Tools:</span> SQL, Power BI, VS Code
+        </li>
+      </ul>
+    </section>
+
+    <!-- Experience -->
+    <section class="section-block">
+      <h2 class="section-heading">Experience</h2>
+      <div class="section-divider"></div>
+      <div class="item-title">UI Designer Intern - Infotact Solutions (PeoplePulse HRMS)</div>
+      <ul class="bullet-list">
+        <li>Designed responsive web UI layout for authentication screens like login, signup, and forgot password, and user profile pages using Figma as part of a 15+ screen HRMS project.</li>
+        <li>Collaborated with the product team for UI flow development for the HR and Employee portal(attendance tracking, leave application/approval, attendance percentage, status views).</li>
+        <li>Designed wireframes, high-fidelity UI, and associated interactive prototypes, as well as assisted design handoffs with developers and usability and accessibility principles for navigation.</li>
+      </ul>
+    </section>
+
+    <!-- Projects -->
+    <section class="section-block">
+      <h2 class="section-heading">Projects</h2>
+      <div class="section-divider"></div>
+      
+      <div class="item-title">Smart Farmer Support App – Smart Agri Hub (Figma)</div>
+      <ul class="bullet-list">
+        <li>Developed mobile app UI using Figma, where user flow, wireframes, and high-fidelity designs were created.</li>
+        <li>user testing to improve the accessibility and layout of the page.</li>
+        <li><span class="bullet-label">Tools:</span> Figma, Wireframing, Prototyping, User Research, Usability Testing, Design.</li>
+      </ul>
+
+      <div class="item-title" style="margin-top: 10px;">Smartwatch Bus Booking Interface (UI/UX Design)</div>
+      <ul class="bullet-list">
+        <li>Designed wearable UI for Bus Booking system using Figma, which is thumb-friendly with a glanceable design.</li>
+        <li>Developed wireframes, prototypes, and reusable UI components with Auto Layout and Smart Animate technologies, adhering to Wear OS specifications.</li>
+        <li><span class="bullet-label">Tools:</span> Figma, Wireframing, Prototyping, Component Library, Responsive</li>
+      </ul>
+    </section>
+
+    <!-- Certifications -->
+    <section class="section-block">
+      <h2 class="section-heading">Certifications</h2>
+      <div class="section-divider"></div>
+      <div class="cert-row">
+        <div class="cert-entry">
+          <span class="cert-bullet">•</span> Soft Skills Certification 2023
+        </div>
+        <div class="cert-entry">
+          <span class="cert-bullet">•</span> UI/UX Design — Great Learning July 2024
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

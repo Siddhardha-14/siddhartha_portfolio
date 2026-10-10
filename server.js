@@ -19,7 +19,8 @@ if (fs.existsSync(path.join(__dirname, '.env'))) {
 const sendHandler = require('./api/send');
 
 const PORT = process.env.PORT || 3000;
-const PUBLIC_DIR = __dirname;
+const REACT_DIST = path.join(__dirname, 'react-portfolio', 'dist');
+const PUBLIC_DIR = fs.existsSync(path.join(REACT_DIST, 'index.html')) ? REACT_DIST : __dirname;
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
